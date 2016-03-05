@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Read to share" name="description"/>
+    <meta content="richole" name="author"/>
+    <title>阅读分享平台-登录</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pages/login.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/commons/initial.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/plugins/bootstrap.css" />
+  </head>
+  <body class="rts-login">
+    <img src="/images/1.jpg" >
+    <div class="login-animition"></div>
+    <div class="rts-body">
+      <div class="rts-title">
+        <h2>阅读分享平台</h2>
+      </div>
+      <div class="page-container">
+        <div class="rts-login-container" style="display:none;">
+          <h3>登录到您的账户</h3>
+          <form id="rts-loginForm">
+            <div class="rts-account">
+              <i class="glyphicon glyphicon-envelope"></i>
+              <input type="text" placeholder="电 子 邮 箱 / 手 机" class="form-control" name="account"/>
+            </div>
+            <div class="rts-password">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="password" placeholder="密 码" class="form-control" name="password" />
+            </div>
+            <div class="clearfix rts-remember">
+              <div>
+                <input type="checkbox" name="remember"/>
+                <a href="javascript:;">记得我</a>
+              </div>
+              <div class="rts-logining">
+                <input type="button" class="form-control rtx-loginBtn" id="rtx-loginBtn" value="登录"/>
+                <i class="glyphicon glyphicon-expand"></i>
+              </div>
+            </div>
+            <input type="reset" class="hide" id="login-reset" />
+          </form>
+          <div class="rts-forget">
+            <h4>忘记密码了吗？</h4>
+          </div>
+          <div class="rts-reset">
+            <p>不用担心，点击</p>
+            <a href="" target="_parent">这里</a>
+            <p>重置密码</p>
+          </div>
+          <div class="rts-create">
+            <label>还没有账户？</label>
+            <a href="#" target="_parent">创建一个账户</a>
+          </div>
+        </div>
+        <div class="rts-register-container" style="display: none;">
+          <div class="rts-register-title">
+            <h3>注册</h3>
+            <label>在下面输入您的个人资料</label>
+          </div>
+          <form id="rts-registerform">
+            <div class="rts-register-name">
+              <i class="glyphicon glyphicon-user"></i>
+              <input type="text" placeholder="名字" class="form-control" name="user">
+              <i data-toggle="tooltip" class="glyphicon"></i>
+            </div>
+            <div class="rts-register-phone">
+              <i class="glyphicon glyphicon-user"></i>
+              <input type="text" placeholder="手机" class="form-control" name="phone">
+              <i data-toggle="tooltip" class="glyphicon"></i>
+            </div>
+            <div class="rts-register-email">
+              <i class="glyphicon glyphicon-envelope"></i>
+              <input type="text" placeholder="电子邮箱" class="form-control" name="email">
+              <i data-toggle="tooltip" class="glyphicon"></i>
+            </div>
+            <div class="rts-register-password">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="password" placeholder="密码" class="form-control" name="password">
+              <i data-toggle="tooltip" class="glyphicon"></i>
+            </div>
+            <div class="rts-register-password-repeat">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="password" placeholder="确认密码" class="form-control" name="passwordRepeat">
+              <i data-toggle="tooltip" class="glyphicon"></i>
+            </div>
+            <div class="rts-register-register">
+              <input type="button" class="form-control" value="注册" id="rts-register" />
+              <i class="glyphicon glyphicon-expand"></i>
+            </div>
+            <input type="reset" class="hide" id="register-reset" />
+          </form>
+          <div class="rts-loginAction">
+            <label>以有一个账户？</label>
+            <a href="#" target="_parent">登录</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/webpack_bundle/common.bundle.js"></script>
+    <script type="text/javascript" src="/webpack_bundle/login.bundle.js"></script>
+  </body>
+</html>

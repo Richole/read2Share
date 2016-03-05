@@ -1,0 +1,9 @@
+module.exports = {
+  host: 'localhost',            // 数据库地址
+  user: 'root',                 // 数据库账号
+  password: 'ddainn1314',       // 数据库密码
+  database: 'readToShare',      // 数据库名称
+  key: 'ChenBaby',              // 加密密码
+  algorithm: 'aes256',          // 加密密码
+  mailHost: 'localhost'         // 邮箱验证链接前缀
+};

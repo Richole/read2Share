@@ -1,0 +1,4 @@
+/node_modules/
+/public/webpack_bundle/
+/public/npm-debug.log
+/public/videos
