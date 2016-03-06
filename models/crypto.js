@@ -2,7 +2,7 @@ var crypto = require('crypto')
 
 //加密
 //algorithm为加密算法， key为加密密码， buf为加密内容
-function cipher(algorithm, key, buf){
+function cipher (algorithm, key, buf){
   var encrypted = "";
   var cip = crypto.createCipher(algorithm, key);
   encrypted += cip.update(buf, 'utf8', 'hex');
@@ -12,7 +12,7 @@ function cipher(algorithm, key, buf){
 
 //解密
 //algorithm为解密算法, key为解密密码,encrypted为解密内容
-function decipher(algorithm, key, encrypted){
+function decipher (algorithm, key, encrypted){
   var decrypted = "";
   var decipher = crypto.createDecipher(algorithm, key);
   decrypted += decipher.update(encrypted, 'hex', 'utf8');
@@ -20,9 +20,78 @@ function decipher(algorithm, key, encrypted){
   return decrypted;
 }
 
+/*
+加密解密算法大致分为两种，一种是需要key，一种是不需要key
+以上crypto为需要key的算法， createhash为不需要key的算法
+且createHash为单向不可逆的算法，所以一般使用于数据库存储密码。
+*/
+function createHash(algorithm, key) {
+  var md5sum = crypto.createHash(algorithm);
+  md5sum.update(key, 'utf8');
+  key = md5sum.digest('hex');
+  return key;
+}
+
 exports.cipher = cipher;
 exports.decipher = decipher;
+exports.createHash = createHash;
 
+/*
+createHash支持的算法
+DSA
+DSA-SHA
+DSA-SHA1 => DSA
+DSA-SHA1-old => DSA-SHA1
+DSS1 => DSA-SHA1
+MD4
+MD5
+RIPEMD160
+RSA-MD4 => MD4
+RSA-MD5 => MD5
+RSA-RIPEMD160 => RIPEMD160
+RSA-SHA => SHA
+RSA-SHA1 => SHA1
+RSA-SHA1-2 => RSA-SHA1
+RSA-SHA224 => SHA224
+RSA-SHA256 => SHA256
+RSA-SHA384 => SHA384
+RSA-SHA512 => SHA512
+SHA
+SHA1
+SHA224
+SHA256
+SHA384
+SHA512
+DSA
+DSA-SHA
+dsaWithSHA1 => DSA
+dss1 => DSA-SHA1
+ecdsa-with-SHA1
+MD4
+md4WithRSAEncryption => MD4
+MD5
+md5WithRSAEncryption => MD5
+ripemd => RIPEMD160
+RIPEMD160
+ripemd160WithRSA => RIPEMD160
+rmd160 => RIPEMD160
+SHA
+SHA1
+sha1WithRSAEncryption => SHA1
+SHA224
+sha224WithRSAEncryption => SHA224
+SHA256
+sha256WithRSAEncryption => SHA256
+SHA384
+sha384WithRSAEncryption => SHA384
+SHA512
+sha512WithRSAEncryption => SHA512
+shaWithRSAEncryption => SHA
+ssl2-md5 => MD5
+ssl3-md5 => MD5
+ssl3-sha1 => SHA1
+whirlpool
+*/
 
 /*
 crypto支持的算法

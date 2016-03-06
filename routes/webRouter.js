@@ -1,6 +1,7 @@
 var express = require('express');
 var login = require('../controllers/login.js');
-var index = require('../controllers/index.js')
+var index = require('../controllers/index.js');
+var weixin = require('../controllers/weixin.js');
 var router = express.Router();
 
 router.get('/', index.showIndex);
@@ -14,3 +15,6 @@ router.get('/login/checkPhone', login.checkPhone);
 router.get('/login/checkEmail', login.checkEmail);
 router.get('/login/verify', login.verifyMail);
 module.exports = router;
+
+//微信模块
+router.get('/weixin', weixin.checkSignature);
