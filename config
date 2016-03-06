@@ -9,4 +9,5 @@ module.exports = {
   appID: 'wx1417dc4330e0eeb8',                              // 微信appID
   appsecret: '1f6c73ac481c4e6d5a5982ccdb0e55d1',            // 微信appsecret
   token: 'ddainn',                                          // 微信token
+  weixinNumber: 'gh_83bf83bc4284',                          // 微信号
 };
