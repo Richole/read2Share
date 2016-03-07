@@ -18,4 +18,14 @@ function checkSignature (request, response, next) {
   }
 }
 
+function authorize (request, response, next) {
+  var code = request.query.code;
+  if(!code) {
+    response.end({error: 'can not get code from url'});
+  }
+  else {
+    
+  }
+}
+
 exports.checkSignature = checkSignature;
