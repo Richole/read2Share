@@ -85,9 +85,13 @@ function weixinEvent (request, response, next) {
           console.log(openId, 'text', data.xml.Content[0]);
         break;
         case "image":
+          getAccessToken(function (access_token) {
+            var date = new Date();
+            var url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID'.format(access_token, data.xml.MediaId[0])
+            console.log(url);
+            download.download(url, '/root/work/pictures/{0}-{1}.jpg'.format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
+          });
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
-          var date = new Date();
-          download.download(url, '/root/work/pictures/{0}-{1}.jpg'.format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
         break;
         case "voice":
           console.log(openId, 'voice', data.xml.MediaId[0]);
