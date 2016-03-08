@@ -1,7 +1,7 @@
 var config = require('../config');
 var crypto = require('../models/crypto.js');
 var httpRequest = require('../models/httpRequest.js');
-var xml = require('xml');
+var xml = require('../models/xml.js');
 
 function checkSignature (request, response, next) {
   var arr = [];
