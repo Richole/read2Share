@@ -1,0 +1,15 @@
+<xml>
+<ToUserName>{0}</ToUserName>
+<FromUserName>{1}</FromUserName>
+<CreateTime>{2}</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<ArticleCount>1</ArticleCount>
+<Articles>
+  <item>
+    <Title><![CDATA[thanks]]></Title> 
+    <Description><a href="http://www.baidu.com">click</a></Description>
+    <PicUrl></PicUrl>
+    <Url>121.42.148.138</Url>
+  </item>
+</Articles>
+</xml> 
