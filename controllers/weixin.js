@@ -60,44 +60,44 @@ function weixinEvent (request, response, next) {
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
-          weixin_event.subscribe(openId, data.xml);
           console.log(openId, 'subscribe');
+          weixin_event.subscribe(openId, data.xml);
         break;
         case "unsubscribe":
-          weixin_event.unsubscribe(openId, data.xml);
           console.log(openId, 'unsubscribe');
+          weixin_event.unsubscribe(openId, data.xml);
         break;
       }
     }
     else if(data.xml.MsgType) {
       switch(data.xml.MsgType[0]) {
         case "text":
-          weixin_event.text(openId, data.xml);
           console.log(openId, 'text', data.xml.Content[0]);
+          weixin_event.text(openId, data.xml);
         break;
         case "image":
-          weixin_event.image(openId, data.xml);
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
+          weixin_event.image(openId, data.xml);
         break;
         case "voice":
-          weixin_event.voice(openId, data.xml);
           console.log(openId, 'voice', data.xml.MediaId[0]);
+          weixin_event.voice(openId, data.xml);
         break;
         case "video":
-          weixin_event.video(openId, data.xml);
           console.log(openId, 'video', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
+          weixin_event.video(openId, data.xml);
         break;
         case "shortvideo":
-          weixin_event.shortvideo(openId, data.xml);
           console.log(openId, 'shortvideo', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
+          weixin_event.shortvideo(openId, data.xml);
         break;
         case "location":
-          weixin_event.location(openId, data.xml);
           console.log(openId, 'location');
+          weixin_event.location(openId, data.xml);
         break;
         case "link":
-          weixin_event.link(openId, data.xml);
           console.log(openId, 'link');
+          weixin_event.link(openId, data.xml);
         break;
       }
     }
