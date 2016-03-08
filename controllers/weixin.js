@@ -2,6 +2,8 @@ var config = require('../config');
 var crypto = require('../models/crypto.js');
 var httpRequest = require('../models/httpRequest.js');
 var xml = require('../models/xml.js');
+var download = require('../models/download.js');
+require('../models/util.js');
 
 function checkSignature (request, response, next) {
   var arr = [];
@@ -26,7 +28,7 @@ function authorize (request, response, next) {
     response.end({error: 'can not get code from url'});
   }
   else {
-    var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code=CODE&grant_type=authorization_code'.format(config.appid, config.appsecret);
+    var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code=CODE&grant_type=authorization_code'.format(config.appID, config.appsecret);
     httpRequest.get(url, function (res) {
       var data = '';
       res.on('data', function (chunk) {
@@ -34,25 +36,32 @@ function authorize (request, response, next) {
       });
       res.on('end', function () {
         data = JSON.parse(data);
-        request.session.openid = data.openid;
-        console.log(data.openid);
+        request.session.openId = data.openId;
+        console.log(data.openId);
       });
     });
   }
 }
 
-function getAccessToken (request, response, next) {
-  var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}'.format(config.appid, config.appsecret);
+function getAccessToken (success) {
+  if(config.access_token && config.access_token_created_at) {
+    if(config.access_token_created_at - new Date().getTime() < 7200000) {
+      success(config.access_token);
+      return;
+    }
+  }
+  var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}'.format(config.appID, config.appsecret);
   httpRequest.get(url, function (res) {
     var data = '';
     res.on('data', function (chunk) {
       data += chunk;
     });
     res.on('end', function () {
-      var date = new Date();
       data = JSON.parse(data);
+      var date = new Date();
       config.access_token = data.access_token;
       config.access_token_created_at = date.getTime();
+      success(data.access_token);
     });
   });
 }
@@ -77,6 +86,8 @@ function weixinEvent (request, response, next) {
         break;
         case "image":
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
+          var date = new Date();
+          download.download(url, '/pictures/{0}-{1}.jpg'._format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
         break;
         case "voice":
           console.log(openId, 'voice', data.xml.MediaId[0]);
@@ -102,3 +113,4 @@ function weixinEvent (request, response, next) {
 
 exports.checkSignature = checkSignature;
 exports.weixinEvent = weixinEvent;
+exports.getAccessToken = getAccessToken;
