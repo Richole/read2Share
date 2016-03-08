@@ -87,7 +87,7 @@ function weixinEvent (request, response, next) {
         case "image":
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
           var date = new Date();
-          download.download(url, '/root/work/pictures/{0}-{1}.jpg'._format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
+          download.download(url, '/root/work/pictures/{0}-{1}.jpg'.format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
         break;
         case "voice":
           console.log(openId, 'voice', data.xml.MediaId[0]);
