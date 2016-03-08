@@ -1,6 +1,7 @@
 var config = require('../config');
 var crypto = require('../models/crypto.js');
 var httpRequest = require('../models/httpRequest.js');
+var xml = require('xml');
 
 function checkSignature (request, response, next) {
   var arr = [];
@@ -56,10 +57,19 @@ function getAccessToken (request, response, next) {
   });
 }
 
-function bindAccount (request, response, next) {
-  console.log(request.body);
-  console.log(request.query);
-  response.end('');
+function weixinEvent (request, response, next) {
+  xml.parseJSON(request.body, function (data) {
+    var openId = data.xml.FromUserName[0];
+    switch(data.xml.Event[0]) {
+      case "subscribe":
+        console.log(openId, 'subscribe');
+      break;
+      case "unsubscribe":
+        console.log(openId, 'unsubscribe');
+      break;
+    }
+    response.end('');
+  });
 }
 
 exports.checkSignature = checkSignature;
