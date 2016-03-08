@@ -29,6 +29,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+app.use(bodyParser.text({type: 'text/xml'}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', webRouter);
 
