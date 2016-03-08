@@ -73,4 +73,4 @@ function weixinEvent (request, response, next) {
 }
 
 exports.checkSignature = checkSignature;
-exports.bindAccount = bindAccount;
+exports.weixinEvent = weixinEvent;
