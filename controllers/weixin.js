@@ -58,7 +58,7 @@ function getAccessToken (request, response, next) {
 }
 
 function weixinEvent (request, response, next) {
-  xml.parseJSON(request.body, function (data) {
+  xml.parseJSON(request.body, function (err, data) {
     var openId = data.xml.FromUserName[0];
     switch(data.xml.Event[0]) {
       case "subscribe":
