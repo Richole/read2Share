@@ -60,8 +60,8 @@ function weixinEvent (request, response, next) {
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
-          console.log(openId, 'subscribe', response);
-          weixin_event.subscribe(openId, data.xml);
+          console.log(openId, 'subscribe');
+          weixin_event.subscribe(openId, data.xml, response);
         break;
         case "unsubscribe":
           console.log(openId, 'unsubscribe');
