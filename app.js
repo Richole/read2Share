@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var webRouter = require('./routes/webRouter');
-
+var config = require('./config.js');
 var ejs = require('ejs');
 
 var app = express();
@@ -31,6 +31,7 @@ app.use(session({
 }));
 app.use(bodyParser.text({type: 'text/xml'}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(config.weixinPictureFolderPath)));
 app.use('/', webRouter);
 
 // catch 404 and forward to error handler

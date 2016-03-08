@@ -10,6 +10,7 @@ function config_module () {
   this.appsecret = '1f6c73ac481c4e6d5a5982ccdb0e55d1';            // 微信appsecret
   this.token = 'ddainn';                                          // 微信token
   this.weixinNumber = 'gh_83bf83bc4284';                          // 微信号
+  this.weixinPictureFolderPath = '/root/work/pictures/';          // 微信图片存放路径
   this.access_token = null;                                       // 微信access_token
   this.access_token_created_at = null;                            // 微信access_token过期时间
 }
