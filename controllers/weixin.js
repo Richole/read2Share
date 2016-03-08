@@ -60,14 +60,42 @@ function getAccessToken (request, response, next) {
 function weixinEvent (request, response, next) {
   xml.parseJSON(request.body, function (err, data) {
     var openId = data.xml.FromUserName[0];
-    switch(data.xml.Event[0]) {
-      case "subscribe":
-        console.log(openId, 'subscribe');
-      break;
-      case "unsubscribe":
-        console.log(openId, 'unsubscribe');
-      break;
+    if(data.xml.Event) {
+      switch(data.xml.Event[0]) {
+        case "subscribe":
+          console.log(openId, 'subscribe');
+        break;
+        case "unsubscribe":
+          console.log(openId, 'unsubscribe');
+        break;
+      }
     }
+    else if(data.xml.MsgType) {
+      switch(data.xml.MsgType[0]) {
+        case "text":
+          console.log(openId, 'text', data.xml.Content[0]);
+        break;
+        case "image":
+          console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
+        break;
+        case "voice":
+          console.log(openId, 'voice', data.xml.MediaId[0]);
+        break;
+        case "video":
+          console.log(openId, 'video', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
+        break;
+        case "shortvideo":
+          console.log(openId, 'shortvideo', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
+        break;
+        case "location":
+          console.log(openId, 'location');
+        break;
+        case "link":
+          console.log(openId, 'link');
+        break;
+      }
+    }
+
     response.end('');
   });
 }
