@@ -21,14 +21,14 @@ function isHttps(url) {
   return false;
 }
 
-/*function get(url, success) {
+function get(url, success) {
   if(isHttps(url)) {
     https.get(url, success);
   }
   else {
     http.get(url, success);
   }
-}*/
+}
 
 var options = {
   protocol: 'https',
@@ -41,23 +41,7 @@ var options = {
     'Content-Length': ''
   }
 };
-function get(hostname, path, data, success, error) {
-  data = querystring.stringify(data);
-  options.hostname = hostname;
-  options.path = path;
-  options.method = 'GET';
-  options.headers['Content-Length'] = data.length;
-  if(true) {
-    console.log('https');
-    var req = https.request(options, success);
-  }
-  else {
-    req = http.request(options, success);
-  }
-  req.on('error', error);  
-  req.write(data);  
-  req.end();
-}
+
 function post(hostname, path, data, success, error) {
   data = querystring.stringify(data);
   options.hostname = hostname;
