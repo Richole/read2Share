@@ -58,6 +58,7 @@ function getAccessToken (request, response, next) {
 
 function bindAccount (request, response, next) {
   console.log(request.body);
+  console.log(request.request);
   response.end('');
 }
 

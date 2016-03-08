@@ -18,4 +18,5 @@ module.exports = router;
 
 //微信模块
 router.get('/weixin', weixin.checkSignature);
+router.post('/weixin', weixin.bindAccount);
 router.post('/weixin/bindAccount', weixin.bindAccount);
