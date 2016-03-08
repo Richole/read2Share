@@ -89,7 +89,7 @@ function weixinEvent (request, response, next) {
             var date = new Date();
             var url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID'.format(access_token, data.xml.MediaId[0])
             console.log(url);
-            download.download(url, '/root/work/pictures/{0}-{1}.jpg'.format(openId, date.format('YYYY-MM-DD hh:mm:ss')));
+            download.download(url, '/root/work/pictures/{0}-{1}.jpg'.format(openId, date.format('YYYY-MM-DD_hh:mm:ss')));
           });
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
         break;
