@@ -1,5 +1,6 @@
 var config = require('../config');
 var weixin = require('./weixin.js');
+var request = require('request');
 require('../models/util.js');
 
 exports.subscribe = function (openId, xml) {
