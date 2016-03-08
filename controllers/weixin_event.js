@@ -13,7 +13,9 @@ exports.subscribe = function (openId, xml, res) {
     data += chunk;
   });
   readerStream.on('end',function(){
+    console.log(data);
     data.format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
+    console.log(data);
     res.end(data);
   });
  
