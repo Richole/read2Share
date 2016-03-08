@@ -10,7 +10,7 @@ CREATE TABLE `user` (
   `password`       VARCHAR(20)  NOT NULL,                                                         #用户密码
   `open_id`        VARCHAR(70)  NULL,                                                             #用户微信绑定账号
   `created_at`     VARCHAR(30)  NOT NULL,                                                         #用户创建时间
-  `email_verify`   BOOLEAN      NULL      DEFAULT FALSE,                                           #邮箱验证
+  `email_verify`   BOOLEAN      NULL      DEFAULT FALSE,                                          #邮箱验证
   `last_login_at`  TIMESTAMP    NULL      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  #用户最后登陆时间
   `last_login_ip`  VARCHAR(15)  NULL,                                                             #用户最后登陆ip
   PRIMARY KEY (`uid`),

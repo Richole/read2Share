@@ -1,9 +1,8 @@
 var config = require('../config');
 var crypto = require('../models/crypto.js');
-var httpRequest = require('../models/httpRequest.js');
 var xml = require('../models/xml.js');
-var download = require('../models/download.js');
 var weixin_event = require('./weixin_event.js');
+var httpRequest = require('request');
 require('../models/util.js');
 
 function checkSignature (request, response, next) {
@@ -30,17 +29,11 @@ function authorize (request, response, next) {
   }
   else {
     var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code=CODE&grant_type=authorization_code'.format(config.appID, config.appsecret);
-    httpRequest.get(url, function (res) {
-      var data = '';
-      res.on('data', function (chunk) {
-        data += chunk;
-      });
-      res.on('end', function () {
-        data = JSON.parse(data);
-        request.session.openId = data.openId;
-        console.log(data.openId);
-      });
-    });
+    httpRequest(url, function (err, res, body) {
+      var data = JSON.parse(body);
+      request.session.openId = data.openId;
+      console.log(data.openId);
+    })
   }
 }
 
@@ -52,19 +45,13 @@ function getAccessToken (success) {
     }
   }
   var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}'.format(config.appID, config.appsecret);
-  httpRequest.get(url, function (res) {
-    var data = '';
-    res.on('data', function (chunk) {
-      data += chunk;
-    });
-    res.on('end', function () {
-      data = JSON.parse(data);
-      var date = new Date();
-      config.access_token = data.access_token;
-      config.access_token_created_at = date.getTime();
-      success(data.access_token);
-    });
-  });
+  httpRequest(url, function (err, res, body) {
+    var data = JSON.parse(body);
+    var date = new Date();
+    config.access_token = data.access_token;
+    config.access_token_created_at = date.getTime();
+    success(config.access_token);
+  })
 }
 
 function weixinEvent (request, response, next) {
