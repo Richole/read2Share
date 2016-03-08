@@ -3,6 +3,7 @@ var crypto = require('../models/crypto.js');
 var httpRequest = require('../models/httpRequest.js');
 var xml = require('../models/xml.js');
 var download = require('../models/download.js');
+var weixin_event = require('./weixin_event.js');
 require('../models/util.js');
 
 function checkSignature (request, response, next) {
@@ -72,9 +73,11 @@ function weixinEvent (request, response, next) {
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
+          weixin_event.subscribe(openId, data.xml);
           console.log(openId, 'subscribe');
         break;
         case "unsubscribe":
+          weixin_event.unsubscribe(openId, data.xml);
           console.log(openId, 'unsubscribe');
         break;
       }
@@ -82,29 +85,31 @@ function weixinEvent (request, response, next) {
     else if(data.xml.MsgType) {
       switch(data.xml.MsgType[0]) {
         case "text":
+          weixin_event.text(openId, data.xml);
           console.log(openId, 'text', data.xml.Content[0]);
         break;
         case "image":
-          getAccessToken(function (access_token) {
-            var date = new Date();
-            var url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}'.format(access_token, data.xml.MediaId[0])
-            download.download(url, '{0}{1}-{2}.jpg'.format(config.weixinPictureFolderPath, openId, date.format('YYYY-MM-DD_hh:mm:ss')));
-          });
+          weixin_event.image(openId, data.xml);
           console.log(openId, 'image', data.xml.PicUrl[0], data.xml.MediaId[0]);
         break;
         case "voice":
+          weixin_event.voice(openId, data.xml);
           console.log(openId, 'voice', data.xml.MediaId[0]);
         break;
         case "video":
+          weixin_event.video(openId, data.xml);
           console.log(openId, 'video', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
         break;
         case "shortvideo":
+          weixin_event.shortvideo(openId, data.xml);
           console.log(openId, 'shortvideo', data.xml.MediaId[0], data.xml.ThumbMediaId[0]);
         break;
         case "location":
+          weixin_event.location(openId, data.xml);
           console.log(openId, 'location');
         break;
         case "link":
+          weixin_event.link(openId, data.xml);
           console.log(openId, 'link');
         break;
       }
