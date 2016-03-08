@@ -3,9 +3,9 @@ var weixin = require('./weixin.js');
 var request = require('request');
 require('../models/util.js');
 
-exports.subscribe = function (openId, xml) {
+exports.subscribe = function (openId, xml, res) {
   weixin.getAccessToken(function (access_token) {
-    var data = {
+/*    var data = {
       touser: openId,
       msgtype: 'text',
       text: {
@@ -18,7 +18,14 @@ exports.subscribe = function (openId, xml) {
       form: data
     }, function(err, httpResponse, body){
       console.log(body);
-    });
+    });*/
+    res.end('<xml>
+              <ToUserName><![CDATA[{0}]]></ToUserName>
+              <FromUserName><![CDATA[{1}]]></FromUserName>
+              <CreateTime>{2}</CreateTime>
+              <MsgType><![CDATA[text]]></MsgType>
+              <Content><![CDATA[{3}]]></Content>
+            </xml>'.format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000), '您好,欢迎关注阅读分享平台,在您的微信账号与平台账号绑定后,您可以直接给我发送信息发布最新动态<br/><a href="121.42.148.138">点击绑定微信账号</a>'));
 
   });
 };

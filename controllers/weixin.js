@@ -60,12 +60,13 @@ function weixinEvent (request, response, next) {
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
-          console.log(openId, 'subscribe');
+          console.log(openId, 'subscribe', response);
           weixin_event.subscribe(openId, data.xml);
         break;
         case "unsubscribe":
           console.log(openId, 'unsubscribe');
           weixin_event.unsubscribe(openId, data.xml);
+          response.end('');
         break;
       }
     }
@@ -100,9 +101,8 @@ function weixinEvent (request, response, next) {
           weixin_event.link(openId, data.xml);
         break;
       }
+      response.end('');
     }
-
-    response.end('');
   });
 }
 
