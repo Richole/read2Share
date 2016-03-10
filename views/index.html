@@ -59,98 +59,106 @@
             <div class="chat-box" contenteditable="true">
             </div>
             <div class="wb-footer chat-box-option" contenteditable="false">
-              <ul class="wb-footer-bar clearfix">
-                <li>
-                  <a href="javascript:;">
-                    <div class="chat-icon-face"></div>
-                    <span class="chat-emotion-table hide">
-                      <span class="table-caret"></span>
-                      <table>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </table>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <div class="chat-icon-image"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <div class="chat-icon-music"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <div class="chat-icon-video"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    <input type="button" value="发布" class="chat-submit" />
-                  </a>
-                </li>
-              </ul>
+              <form id="chat-form" enctype="multipart/form-data">
+                <ul class="wb-footer-bar clearfix">
+                  <li>
+                    <a href="javascript:;">
+                      <div class="chat-icon-face"></div>
+                      <span class="chat-emotion-table hide">
+                        <span class="table-caret"></span>
+                        <table>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </table>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:;">
+                      <div class="chat-icon-image"></div>
+                    </a>
+                    <input type="file" name="images" style="display:none;" id="images-choose" multiple="multiple" accept="image/png,image/gif,image/jpg,image/jpeg" />
+                    <span class="badge image-badge"></span>
+                  </li>
+                  <li>
+                    <a href="javascript:;">
+                      <div class="chat-icon-music"></div>
+                    </a>
+                    <input type="file" name="musics" style="display:none;" id="musics-choose" multiple="multiple" accept="audio/mpeg,audio/mp4" />
+                    <span class="badge music-badge"></span>
+                  </li>
+                  <li>
+                    <a href="javascript:;">
+                      <div class="chat-icon-video"></div>
+                    </a>
+                    <input type="file" name="videos" style="display:none;" id="videos-choose" multiple="multiple" accept="audio/mp4" />
+                    <span class="badge video-badge"></span>
+                  </li>
+                  <li>
+                    <a href="javascript:;">
+                      <input type="button" value="发布" class="chat-submit" />
+                    </a>
+                  </li>
+                </ul>
+              </form>
             </div>
           </div>
           <div class="content-box" data-type="message">

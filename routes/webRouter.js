@@ -2,9 +2,11 @@ var express = require('express');
 var login = require('../controllers/login.js');
 var index = require('../controllers/index.js');
 var weixin = require('../controllers/weixin.js');
+var multiparty = require('connect-multiparty')();
 var router = express.Router();
 
 router.get('/', index.showIndex);
+router.post('/index/userMessage', multiparty , index.userMessage);
 
 //注册登陆模块
 router.get('/login', login.showLogin);

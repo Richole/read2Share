@@ -31,7 +31,7 @@ app.use(session({
 }));
 app.use(bodyParser.text({type: 'text/xml'}));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(config.weixinPictureFolderPath)));
+app.use(express.static(path.join(config.pictureFolderPath)));
 app.use('/', webRouter);
 
 // catch 404 and forward to error handler

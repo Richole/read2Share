@@ -5,7 +5,7 @@ var config = require('../config');
 var mail = require('../models/mail.js');
 
 exports.showLogin = function (request, response, next) {
-  if(request.session.account) {
+  if(request.session.uid) {
     response.redirect('/');
   }
   else {
@@ -14,8 +14,8 @@ exports.showLogin = function (request, response, next) {
 };
 
 exports.signOut = function (request, response, next) {
-  if(request.session.account) {
-    delete(request.session.account);
+  if(request.session.uid) {
+    delete(request.session.uid);
   }
   response.json({isSignOut: true});
 };
@@ -39,7 +39,7 @@ exports.signIn = function (request, response, next) {
       }
       else {
         var data = {isVerify: true, message: "验证成功"};
-        request.session.account = request.body.account;
+        request.session.uid = res[0].uid;
         if(request.body.remember) {
           response.cookie('account', '{0}'.format(request.body.account), {maxAge:5*24*60*60*1000});
           response.cookie('password', '{0}'.format(crypto.cipher(config.algorithm, config.key, password)), {maxAge:5*24*60*60*1000});

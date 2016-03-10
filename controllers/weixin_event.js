@@ -26,7 +26,7 @@ exports.image = function (openId, xml) {
   weixin.getAccessToken(function (access_token) {
     var date = new Date();
     var url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}'.format(access_token, data.xml.MediaId[0]);
-    var filePath = '{0}{1}-{2}.jpg'.format(config.weixinPictureFolderPath, openId, date.format('YYYY-MM-DD_hh:mm:ss'));
+    var filePath = '{0}{1}-{2}.jpg'.format(config.pictureFolderPath, openId, date.format('YYYY-MM-DD_hh:mm:ss'));
     request(url).pipe(fs.createWriteStream(filePath));
   });
 };

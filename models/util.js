@@ -7,14 +7,6 @@ String.prototype.format = function() {
   return source;
 };
 
-Array.prototype.max = function () {
-  return Math.max.apply(Math, this);
-};
-
-Array.prototype.min = function () {
-  return Math.min.apply(Math, this);
-};
-
 Date.prototype.format = function (fmt) { //author: meizz 
   var o = {
     "M+": this.getMonth() + 1, //月份 
