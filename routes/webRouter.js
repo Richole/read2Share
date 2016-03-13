@@ -7,7 +7,10 @@ var router = express.Router();
 
 router.get('/', index.showIndex);
 router.post('/index/userMessage', multiparty , index.userMessage);
-
+router.get('/index/userMessage', index.getUserMessage);
+router.post('/index/addGood', index.addGood);
+router.post('/index/addComment', index.addComment);
+router.get('/index/getComment', index.getComment);
 //注册登陆模块
 router.get('/login', login.showLogin);
 router.get('/login/signOut', login.signOut);

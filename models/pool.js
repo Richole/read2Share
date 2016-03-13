@@ -42,7 +42,9 @@ exports.query = function(options) {
             console.log(error.stack);
           }
         }
-        successHandler(results);
+        if(successHandler) {
+          successHandler(results);
+        }
       });
     }
     else {
