@@ -69,10 +69,11 @@ function weixinEvent (request, response, next) {
         break;
         case "scancode_waitmsg":
           var ScanResult = data.xml.ScanCodeInfo[0].ScanResult[0];
-          var EventKey = data.xml.Event[0];
+          var EventKey = data.xml.EventKey[0];
           console.log(ScanResult, EventKey , "scancode_waitmsg");
         break;
       }
+      response.end('');
     }
     else if(data.xml.MsgType) {
       switch(data.xml.MsgType[0]) {
