@@ -55,10 +55,8 @@ function getAccessToken (success) {
 }
 
 function weixinEvent (request, response, next) {
-  console.log(request.body);
   xml.parseJSON(request.body, function (err, data) {
     var openId = data.xml.FromUserName[0];
-    console.log(data.xml,data.xml.toString());
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
@@ -101,10 +99,8 @@ function weixinEvent (request, response, next) {
           console.log(openId, 'link');
           weixin_event.link(openId, data.xml);
         break;
-        case "scan":
-          console.log(data.xml,data.xml.toString(), "scan");
-        case "scancode_push":
-          console.log(data.xml,data.xml.toString(), "scancode_push");
+        case "scancode_waitmsg":
+          console.log(data.xml.ScanCodeInfo[0].ScanResult[0], "scancode_waitmsg");
       }
       response.end('');
     }
