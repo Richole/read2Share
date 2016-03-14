@@ -1,15 +1,7 @@
-<xml>
+ <xml>
 <ToUserName>{0}</ToUserName>
 <FromUserName>{1}</FromUserName>
 <CreateTime>{2}</CreateTime>
-<MsgType><![CDATA[news]]></MsgType>
-<ArticleCount>1</ArticleCount>
-<Articles>
-  <item>
-    <Title><![CDATA[thanks]]></Title> 
-    <Description><a href="http://www.baidu.com">click</a></Description>
-    <PicUrl></PicUrl>
-    <Url>121.42.148.138</Url>
-  </item>
-</Articles>
-</xml> 
+<MsgType>text</MsgType>
+<Content>感谢您关注阅读信息管理平台公众号,请点击菜单栏的登陆按钮,发送消息给公众号,更新您的个人微博.</Content>
+</xml>
