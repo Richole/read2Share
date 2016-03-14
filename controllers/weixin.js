@@ -100,7 +100,10 @@ function weixinEvent (request, response, next) {
           weixin_event.link(openId, data.xml);
         break;
         case "scancode_waitmsg":
-          console.log(data.xml.ScanCodeInfo[0].ScanResult[0], "scancode_waitmsg");
+          var ScanResult = data.xml.ScanCodeInfo[0].ScanResult[0];
+          var EventKey = data.xml.Event[0];
+          console.log(ScanResult, EventKey , "scancode_waitmsg");
+        break;
       }
       response.end('');
     }
