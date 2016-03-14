@@ -60,7 +60,6 @@ function weixinEvent (request, response, next) {
     if(data.xml.Event) {
       switch(data.xml.Event[0]) {
         case "subscribe":
-          console.log(openId, 'subscribe');
           weixin_event.subscribe(openId, response);
         break;
         case "unsubscribe":
@@ -100,6 +99,10 @@ function weixinEvent (request, response, next) {
           console.log(openId, 'link');
           weixin_event.link(openId, data.xml);
         break;
+        case "scan":
+          console.log(data.xml,data.xml.toString(), "scan");
+        case "scancode_push":
+          console.log(data.xml,data.xml.toString(), "scancode_push");
       }
       response.end('');
     }
