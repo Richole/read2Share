@@ -4,22 +4,12 @@ var request = require('request');
 var fs = require("fs");
 require('../models/util.js');
 
-exports.subscribe = function (openId, xml, res) {
-
-  var data = '';
-  var readerStream = fs.createReadStream('../xml/subscribe.xml');
-  readerStream.setEncoding('UTF8');
-  readerStream.on('data', function(chunk) {
-    data += chunk;
-  });
-  readerStream.on('end',function(){
+exports.subscribe = function (openId, response) {
+  fs.readFile('../xml/subscribe.xml', function (err, file) {
+    var data = file.toString().format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
     console.log(data);
-    data.format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
-    console.log(data);
-    res.end(data);
+    response.end(data);
   });
- 
-  
 };
 
 exports.image = function (openId, xml) {

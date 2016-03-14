@@ -61,11 +61,11 @@ function weixinEvent (request, response, next) {
       switch(data.xml.Event[0]) {
         case "subscribe":
           console.log(openId, 'subscribe');
-          weixin_event.subscribe(openId, data.xml, response);
+          weixin_event.subscribe(openId, response);
         break;
         case "unsubscribe":
           console.log(openId, 'unsubscribe');
-          weixin_event.unsubscribe(openId, data.xml);
+          weixin_event.unsubscribe(openId);
           response.end('');
         break;
       }
