@@ -5,7 +5,10 @@ var fs = require("fs");
 require('../models/util.js');
 
 exports.subscribe = function (openId, response) {
-  fs.readFile('../xml/subscribe.xml', function (err, file) {
+  fs.readFile('./xml/subscribe.xml', function (err, file) {
+    if(err) {
+      console.log(err);
+    }
     var data = file.toString().format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
     console.log(data);
     response.end(data);
