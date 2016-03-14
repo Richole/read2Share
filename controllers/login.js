@@ -17,7 +17,7 @@ exports.signOut = function (request, response, next) {
   if(request.session.uid) {
     delete(request.session.uid);
   }
-  response.json({isSignOut: true});
+  response.redirect('/');
 };
 
 exports.signIn = function (request, response, next) {
