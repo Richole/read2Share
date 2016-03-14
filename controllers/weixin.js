@@ -67,6 +67,11 @@ function weixinEvent (request, response, next) {
           weixin_event.unsubscribe(openId);
           response.end('');
         break;
+        case "scancode_waitmsg":
+          var ScanResult = data.xml.ScanCodeInfo[0].ScanResult[0];
+          var EventKey = data.xml.Event[0];
+          console.log(ScanResult, EventKey , "scancode_waitmsg");
+        break;
       }
     }
     else if(data.xml.MsgType) {
@@ -98,13 +103,6 @@ function weixinEvent (request, response, next) {
         case "link":
           console.log(openId, 'link');
           weixin_event.link(openId, data.xml);
-        break;
-        case "event":
-          if(data.xml.Event[0] == "scancode_waitmsg") {
-            var ScanResult = data.xml.ScanCodeInfo[0].ScanResult[0];
-            var EventKey = data.xml.Event[0];
-            console.log(ScanResult, EventKey , "scancode_waitmsg");
-          }
         break;
       }
       response.end('');
