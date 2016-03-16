@@ -11,7 +11,6 @@ exports.subscribe = function (openId, response) {
       console.log(err);
     }
     var data = file.toString().format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
-    console.log(data);
     response.writeHead(200, {'Content-Type': 'application/xml'});
     response.end(data);
   });
