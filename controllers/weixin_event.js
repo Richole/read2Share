@@ -12,8 +12,13 @@ exports.subscribe = function (openId, response) {
     }
     var data = file.toString().format(openId, config.weixinNumber, parseInt(new Date().getTime()/1000));
     console.log(data);
+    response.writeHead(200, {'Content-Type': 'application/xml'});
     response.end(data);
   });
+};
+
+exports.unsubscribe = function (openId, response) {
+  response.end('');
 };
 
 exports.image = function (openId, xml) {

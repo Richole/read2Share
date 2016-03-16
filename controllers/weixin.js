@@ -65,7 +65,6 @@ function weixinEvent (request, response, next) {
         case "unsubscribe":
           console.log(openId, 'unsubscribe');
           weixin_event.unsubscribe(openId);
-          response.end('');
         break;
         case "scancode_waitmsg":
           var ScanResult = data.xml.ScanCodeInfo[0].ScanResult[0];
@@ -73,7 +72,6 @@ function weixinEvent (request, response, next) {
           console.log(ScanResult, EventKey , "scancode_waitmsg");
         break;
       }
-      response.end('');
     }
     else if(data.xml.MsgType) {
       switch(data.xml.MsgType[0]) {
