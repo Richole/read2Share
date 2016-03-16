@@ -4,6 +4,12 @@ var crypto = require('../models/crypto.js');
 var config = require('../config');
 var mail = require('../models/mail.js');
 
+function deleteOutDateUser (uid) {
+  pool.query({
+    sql: 'delete from user where uid = {0}'.format(uid)
+  });
+}
+
 exports.showLogin = function (request, response, next) {
   if(request.session.uid) {
     response.redirect('/');
@@ -51,7 +57,8 @@ exports.signIn = function (request, response, next) {
 };
 
 exports.signUp = function (request, response, next) {
-  var created_at = new Date().format("YYYY-MM-DD hh:mm:ss");
+  var created_at = new Date().getTime();
+  if(request.body)
   pool.query({
     sql: 'insert into user (`name`,`phone`,`email`,`password`, `created_at`) values("{0}","{1}","{2}","{3}","{4}")'.format(request.body.user, request.body.phone, request.body.email, request.body.password, created_at),
     success: function (res) {
@@ -70,10 +77,16 @@ exports.signUp = function (request, response, next) {
 
 exports.checkEmail = function (request, response, next) {
   pool.query({
-    sql: 'select email from user where email = "{0}"'.format(request.query.email),
+    sql: 'select * from user where email = "{0}"'.format(request.query.email),
     success: function (res) {
       if(res.length) {
-        response.json({usable: false, message: "该邮箱已注册"});
+       if(!res[0].email_verify && new Date().getTime() - parseInt(res[0].created_at) > 60000) {
+          deleteOutDateUser(res[0].uid);
+          response.json({usable: true, message: "有效的邮箱地址"});
+        }
+        else {
+          response.json({usable: false, message: "该邮箱已注册"});
+        }
       }
       else {
         response.json({usable: true, message: "有效的邮箱地址"});
@@ -84,10 +97,16 @@ exports.checkEmail = function (request, response, next) {
 
 exports.checkPhone = function (request, response, next) {
   pool.query({
-    sql: 'select phone from user where phone = "{0}"'.format(request.query.phone),
+    sql: 'select * from user where phone = "{0}"'.format(request.query.phone),
     success: function (res) {
       if(res.length) {
-        response.json({usable: false, message: "该手机号码已注册"});
+       if(!res[0].email_verify && new Date().getTime() - parseInt(res[0].created_at) > 60000) {
+          deleteOutDateUser(res[0].uid);
+          response.json({usable: true, message: "有效的手机号码"});
+        }
+        else {
+          response.json({usable: false, message: "该手机号码已注册"});
+        }
       }
       else {
         response.json({usable: true, message: "有效的手机号码"});
@@ -103,19 +122,19 @@ exports.verifyMail = function (request, response, next) {
   var name = crypto.decipher(config.algorithm, config.key, arr[1]);
   var thisTime = parseInt(crypto.decipher(config.algorithm, config.key, arr[2]));
   if(new Date().getTime() - thisTime >= 3600000) {
-    response.render('verify', {isVerify: false, message: '验证已失效', title: "阅读分享平台---readToShare 邮箱验证"});
+    response.render('login?verify=false');
   }
   else {
     pool.query({
       sql: 'update user set email_verify = true where email = "{0}"'.format(mail),
       success: function (res) {
         if(res) {
-          response.render('verify', {isVerify: true, message: '邮箱验证成功', title: "阅读分享平台---readToShare 邮箱验证"});
+          response.render('login?verify=true');
         }
       },
       error: function (err) {
         if(err) {
-          response.render('verify', {isVerify: true, message: '验证失败', title: "阅读分享平台---readToShare 邮箱验证"});
+          response.render('login?verify=false');
         }
       }
     });

@@ -43,4 +43,3 @@ CREATE TABLE `comment` (
   `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          #评论创建时间
   CONSTRAINT `FK_comment_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
