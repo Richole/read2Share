@@ -57,7 +57,7 @@ exports.signIn = function (request, response, next) {
 };
 
 exports.signUp = function (request, response, next) {
-  var created_at = new Date().getTime();
+  var created_at = new Date().format("YYYY-MM-DD hh:mm:ss");;
   if(request.body)
   pool.query({
     sql: 'insert into user (`name`,`phone`,`email`,`password`, `created_at`) values("{0}","{1}","{2}","{3}","{4}")'.format(request.body.user, request.body.phone, request.body.email, request.body.password, created_at),
@@ -80,7 +80,8 @@ exports.checkEmail = function (request, response, next) {
     sql: 'select * from user where email = "{0}"'.format(request.query.email),
     success: function (res) {
       if(res.length) {
-       if(!res[0].email_verify && new Date().getTime() - parseInt(res[0].created_at) > 60000) {
+        var date = new Date(res[0].created_at).getTime();
+        if(!res[0].email_verify && new Date().getTime() - date > 3600000) {
           deleteOutDateUser(res[0].uid);
           response.json({usable: true, message: "有效的邮箱地址"});
         }
@@ -92,7 +93,7 @@ exports.checkEmail = function (request, response, next) {
         response.json({usable: true, message: "有效的邮箱地址"});
       }
     }
-  })
+  });
 };
 
 exports.checkPhone = function (request, response, next) {
@@ -100,7 +101,8 @@ exports.checkPhone = function (request, response, next) {
     sql: 'select * from user where phone = "{0}"'.format(request.query.phone),
     success: function (res) {
       if(res.length) {
-       if(!res[0].email_verify && new Date().getTime() - parseInt(res[0].created_at) > 60000) {
+        var date = new Date(res[0].created_at).getTime();
+        if(!res[0].email_verify && new Date().getTime() - date > 3600000) {
           deleteOutDateUser(res[0].uid);
           response.json({usable: true, message: "有效的手机号码"});
         }
@@ -129,12 +131,12 @@ exports.verifyMail = function (request, response, next) {
       sql: 'update user set email_verify = true where email = "{0}"'.format(mail),
       success: function (res) {
         if(res) {
-          response.render('login?verify=true');
+          response.redirect('/login?type=verify&verify=true');
         }
       },
       error: function (err) {
         if(err) {
-          response.render('login?verify=false');
+          response.redirect('/login?type=verifyverify=false');
         }
       }
     });
