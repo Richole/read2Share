@@ -3,5 +3,5 @@
 <FromUserName>{1}</FromUserName>
 <CreateTime>{2}</CreateTime>
 <MsgType>text</MsgType>
-<Content>感谢您关注阅读信息管理平台公众号,请点击菜单栏的登陆按钮,发送消息给公众号,更新您的个人微博.</Content>
+<Content>感谢您关注阅读信息管理平台公众号,请点击菜单栏的绑定登陆按钮扫描您平台个人二维码,发送消息给公众号,更新您的个人微博.</Content>
 </xml>
