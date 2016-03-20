@@ -41,7 +41,7 @@
         <li>
           <a href="javascript:;">
             <i class="glyphicon glyphicon-user"></i>
-            Mr-Chen-DaiDai
+            <%= name %>
           </a>
         </li>
         <li>
@@ -62,11 +62,12 @@
             </div>
             <div class="wb-footer chat-box-option" contenteditable="false">
               <form id="chat-form" enctype="multipart/form-data">
+                <input type="reset" style="display: none;" id="chat-box-reset">
                 <input type="hidden" name="text" id="chat-box-content" />
                 <ul class="wb-footer-bar clearfix">
                   <li>
                     <a href="javascript:;">
-                      <div class="chat-icon-face"></div>
+                      <div class="chat-icon-face" v-on:click="showBuble"></div>
                       <span class="chat-emotion-table hide">
                         <span class="table-caret"></span>
                         <table>
@@ -138,22 +139,22 @@
                     <a href="javascript:;">
                       <div class="chat-icon-image"></div>
                     </a>
-                    <input type="file" name="images" style="display:none;" id="images-choose" multiple="multiple" accept="image/png,image/gif,image/jpg,image/jpeg" />
-                    <span class="badge image-badge"></span>
+                    <input type="file" name="images" style="display:none;" id="images-choose" multiple="multiple" accept="image/png,image/gif,image/jpg,image/jpeg" v-on:change="imageChange" />
+                    <span class="badge image-badge">{{ imageLength > 0 ? imageLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
                       <div class="chat-icon-music"></div>
                     </a>
-                    <input type="file" name="musics" style="display:none;" id="musics-choose" multiple="multiple" accept="audio/mpeg,audio/mp4" />
-                    <span class="badge music-badge"></span>
+                    <input type="file" name="musics" style="display:none;" id="musics-choose" multiple="multiple" accept="audio/mpeg,audio/mp4" v-on:change="musicChange" />
+                    <span class="badge music-badge">{{ musicLength > 0 ? musicLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
                       <div class="chat-icon-video"></div>
                     </a>
-                    <input type="file" name="videos" style="display:none;" id="videos-choose" multiple="multiple" accept="audio/mp4" />
-                    <span class="badge video-badge"></span>
+                    <input type="file" name="videos" style="display:none;" id="videos-choose" multiple="multiple" accept="audio/mp4" v-on:change="videoChange" />
+                    <span class="badge video-badge">{{ videoLength > 0 ? videoLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
@@ -322,7 +323,7 @@
         <div class="right-side-content">
           <div class="content-box">
             <div class="hot-topic-header">
-              <h3 class="topic">热门话题</h3>
+              <h3 class="topic">热门书籍</h3>
               <a href="javascript:;" class="change-topic">
                 <i class="glyphicon glyphicon-repeat"></i>
                 换一换

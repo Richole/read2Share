@@ -6,7 +6,7 @@ config.pictureFolderPath = "/home/richole/Pictures/";
 
 exports.showIndex = function (request, response, next) {
   if(request.session.uid) {
-    response.render('index');
+    response.render('index', {name: request.session.name});
   }
   else {
     response.redirect('/login');
