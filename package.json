@@ -5,7 +5,7 @@
   "scripts": {
     "debug": "sudo node --debug ./bin/www",
     "start": "sudo supervisor ./bin/www",
-    "webpack": "webpack --progress --color --watch",
+    "webpack": "sudo webpack --progress --color --watch",
     "inspector": "node-inspector",
     "livereload": "livereload"
   },

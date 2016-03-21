@@ -18,7 +18,7 @@ exports.userMessage = function (request, response, next) {
   var musics = request.files.musics;
   var videos = request.files.videos;
   var isArray = request.files.images.length != undefined;
-  request.body.text = request.body.text | "";
+  request.body.text = request.body.text || "";
   
   if(!isArray && !musics.size && !videos.size && request.body.text) {
     var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), '', '', '', '', 'WeiBo');

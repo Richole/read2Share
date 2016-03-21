@@ -140,25 +140,25 @@
                       <div class="chat-icon-image"></div>
                     </a>
                     <input type="file" name="images" style="display:none;" id="images-choose" multiple="multiple" accept="image/png,image/gif,image/jpg,image/jpeg" v-on:change="imageChange" />
-                    <span class="badge image-badge">{{ imageLength > 0 ? imageLength : '' }}</span>
+                    <span class="badge image-badge hide" v-bind:class="{'badge-show': imageLength > 0}">{{ imageLength > 0 ? imageLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
                       <div class="chat-icon-music"></div>
                     </a>
                     <input type="file" name="musics" style="display:none;" id="musics-choose" multiple="multiple" accept="audio/mpeg,audio/mp4" v-on:change="musicChange" />
-                    <span class="badge music-badge">{{ musicLength > 0 ? musicLength : '' }}</span>
+                    <span class="badge music-badge hide" v-bind:class="{'badge-show': musicLength > 0}">{{ musicLength > 0 ? musicLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
                       <div class="chat-icon-video"></div>
                     </a>
                     <input type="file" name="videos" style="display:none;" id="videos-choose" multiple="multiple" accept="audio/mp4" v-on:change="videoChange" />
-                    <span class="badge video-badge">{{ videoLength > 0 ? videoLength : '' }}</span>
+                    <span class="badge video-badge hide" v-bind:class="{'badge-show': videoLength > 0}">{{ videoLength > 0 ? videoLength : '' }}</span>
                   </li>
                   <li>
                     <a href="javascript:;">
-                      <input type="button" value="发布" class="chat-submit" />
+                      <input type="button" value="发布" class="chat-submit" v-on:click="submit" />
                     </a>
                   </li>
                 </ul>
