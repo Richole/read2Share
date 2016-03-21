@@ -57,7 +57,7 @@
     <div class="content">
       <div>
         <div class="left-side-content">
-          <div class="content-box" >
+          <div class="content-box">
             <div class="chat-box" contenteditable="true">
             </div>
             <div class="wb-footer chat-box-option" contenteditable="false">
@@ -163,6 +163,52 @@
                   </li>
                 </ul>
               </form>
+            </div>
+          </div>
+          <div class="content-box" v-bind:data-type="message.type" v-for="message in messages">
+            <div class="wb-header">
+              <img src="http://tp2.sinaimg.cn/5187664653/50/40058043651/1" class="wb-author-head-img" />
+              <span>
+                <p class="author-name">
+                  <a href="javascript:;">邓超</a>
+                </p>
+                <p class="wb-time-and-info">
+                  3月3日 20:15 来自 iPhone 6s
+                </p>
+              </span>
+              <a href="javascript:;" class="my-care glyphicon glyphicon-heart-empty"></a>
+            </div>
+            <div class="wb-body">
+              <div>
+                <p class="wb-message">
+                  【 著名表演艺术家#葛存壮去世# 送别！】记者从葛存壮家人处获悉,今日8点33分著名表演艺术家葛存壮因脑梗引发心脏衰竭去逝，享年87岁。1949年，20岁的葛存壮开始演员生涯。他因在《红旗谱》中饰演冯兰池被人熟识；因出演《周恩来伟大的朋友》获中国电影金鸡奖最佳男配角奖。转发送别！(央视记者杨晓宁)
+                </p>
+              </div>
+            </div>
+            <div class="wb-footer">
+              <ul class="wb-footer-bar clearfix">
+                <li>
+                  <a href="javascript:;">
+                    收藏
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    转发 90610
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    评论 35451
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    383644
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="content-box" data-type="message">
@@ -291,6 +337,57 @@
                 <video src="/videos/test.mp4" controls="controls">
                   your browser does not support.
                 </video>
+              </div>
+            </div>
+            <div class="wb-footer">
+              <ul class="wb-footer-bar clearfix">
+                <li>
+                  <a href="javascript:;">
+                    收藏
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    转发 90610
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    评论 35451
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    383644
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content-box" data-type="music">
+            <div class="wb-header">
+              <img src="http://tp2.sinaimg.cn/5187664653/50/40058043651/1" class="wb-author-head-img" />
+              <span>
+                <p class="author-name">
+                  <a href="javascript:;">邓超</a>
+                </p>
+                <p class="wb-time-and-info">
+                  3月3日 20:15 来自 iPhone 6s
+                </p>
+              </span>
+              <a href="javascript:;" class="my-care glyphicon glyphicon-heart-empty"></a>
+            </div>
+            <div class="wb-body">
+              <div>
+                <p class="wb-message">
+                  【 著名表演艺术家#葛存壮去世# 送别！】记者从葛存壮家人处获悉,今日8点33分著名表演艺术家葛存壮因脑梗引发心脏衰竭去逝，享年87岁。1949年，20岁的葛存壮开始演员生涯。他因在《红旗谱》中饰演冯兰池被人熟识；因出演《周恩来伟大的朋友》获中国电影金鸡奖最佳男配角奖。转发送别！(央视记者杨晓宁)
+                </p>
+              </div>
+              <div class="wb-audio">
+                <audio src="/videos/test.mp4" controls="controls">
+                  your browser does not support.
+                </audio>
               </div>
             </div>
             <div class="wb-footer">

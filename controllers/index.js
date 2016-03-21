@@ -61,21 +61,21 @@ exports.getUserMessage = function (request, response, next) {
   if(request.query.type) {
     switch (request.query.type) {
       case "all":
-        var sql = 'select * , DATE_FORMAT(created_at, "%Y-%m-%d %T") as format_time from message';
+        var sql = 'select user.name, message.* , DATE_FORMAT(message.created_at, "%Y-%m-%d %T") as format_time from message inner join user where user.uid = message.uid';
       break;
       case "my":
-        var sql = 'select * , DATE_FORMAT(created_at, "%Y-%m-%d %T") as format_time from message where `uid` = {0}'.format(request.session.uid);
+        var sql = 'select user.name, message.* , DATE_FORMAT(message.created_at, "%Y-%m-%d %T") as format_time from message join user where user.uid = message.uid and message.uid = {0}'.format(request.session.uid);
       break;
       case "myCare":
-        var sql = 'select * , DATE_FORMAT(created_at, "%Y-%m-%d %T") as format_time from message where `other_message_id` = {0}'.format(request.session.uid);
+        var sql = 'select user.name, message.* , DATE_FORMAT(message.created_at, "%Y-%m-%d %T") as format_time from message join user where user.uid = message.uid and message.other_message_id = {0}'.format(request.session.uid);
       break;
       default:
-        var sql = 'select * , DATE_FORMAT(created_at, "%Y-%m-%d %T") as format_time from message';
+        var sql = 'select user.name, message.* , DATE_FORMAT(message.created_at, "%Y-%m-%d %T") as format_time from message join user where user.uid = message.uid';
       break;
     };
   }
   else {
-    var sql = 'select * , DATE_FORMAT(created_at, "%Y-%m-%d %T") as format_time from message';
+    var sql = 'select user.name, message.* , DATE_FORMAT(message.created_at, "%Y-%m-%d %T") as format_time from message join user where user.uid = message.uid';
   }
   pool.query({
     sql: sql,
