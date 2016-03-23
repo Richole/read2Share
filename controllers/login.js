@@ -47,6 +47,7 @@ exports.signIn = function (request, response, next) {
         var data = {isVerify: true, message: "验证成功"};
         request.session.uid = res[0].uid;
         request.session.name = res[0].name;
+        request.session.head_img = res[0].head_img;
         if(request.body.remember) {
           response.cookie('account', '{0}'.format(request.body.account), {maxAge:5*24*60*60*1000});
           response.cookie('password', '{0}'.format(crypto.cipher(config.algorithm, config.key, password)), {maxAge:5*24*60*60*1000});
