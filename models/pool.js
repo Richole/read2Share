@@ -1,15 +1,15 @@
 var config = require("../config");
- 
+
 var options = {
   'host': config.host,
   'user': config.user,
   'password': config.password,
   'database': config.database
 };
- 
+
 var mysql = require('mysql');
 var pool = mysql.createPool(options);
- 
+
 /**
  * 释放数据库连接
  */
@@ -18,7 +18,7 @@ exports.release = function(connection) {
     console.log('Connection closed');
   });
 };
- 
+
 
 exports.query = function(options) {
   pool.getConnection(function(error, connection) {
@@ -31,6 +31,7 @@ exports.query = function(options) {
     var args = options['args'];
     var successHandler = options['success'];
     var errorHandler = options['error'];
+    var response = options['response'];
     console.log(sql);
     if(!args) {
       var query = connection.query(sql, function(error, results) {
@@ -41,9 +42,17 @@ exports.query = function(options) {
           else {
             console.log(error.stack);
           }
+          if(response) {
+            response.json({success: false});
+          }
         }
-        if(successHandler) {
-          successHandler(results);
+        else{
+          if(successHandler) {
+            successHandler(results);
+          }
+          if(response) {
+            response.json({success: true});
+          }
         }
       });
     }
@@ -56,8 +65,18 @@ exports.query = function(options) {
           else {
             console.log(error.stack);
           }
+          if(response) {
+            response.json({success: false});
+          }
         }
-        successHandler(results);
+        else{
+          if(successHandler) {
+            successHandler(results);
+          }
+          if(response) {
+            response.json({success: true});
+          }
+        }
       });
     }
 

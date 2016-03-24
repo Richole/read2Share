@@ -21,17 +21,19 @@ CREATE TABLE `user` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `message` (
-  `message_id`        INT(11)       NOT NULL  AUTO_INCREMENT,                     #微博ID
-  `uid`               INT(11)       NOT NULL,                                     #用户ID
-  `other_message_id`  INT(11)       NULL,                                         #转发拥有者ID
-  `text`              VARCHAR(300)  NULL,                                         #微博内容
-  `image_url`         TEXT          NULL,                                         #图片url
-  `video_url`         VARCHAR(100)  NULL,                                         #视频url
-  `thumb_video_url`   VARCHAR(100)  NULL,                                         #视频缩略图url
-  `music_url`         VARCHAR(100)  NULL,                                         #音乐url
-  `good`              INT(11)       NULL      DEFAULT 0,                          #点赞数
-  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          #微博创建时间
-  `come_from`         VARCHAR(30)   NULL,                                         #微博来源
+  `message_id`           INT(11)       NOT NULL  AUTO_INCREMENT,                     #微博ID
+  `uid`                  INT(11)       NOT NULL,                                     #用户ID
+  `other_message_id`     INT(11)       NULL,                                         #转发拥有者ID
+  `text`                 VARCHAR(300)  NULL,                                         #微博内容
+  `image_url`            TEXT          NULL,                                         #图片url
+  `video_url`            VARCHAR(100)  NULL,                                         #视频url
+  `thumb_video_url`      VARCHAR(100)  NULL,                                         #视频缩略图url
+  `music_url`            VARCHAR(100)  NULL,                                         #音乐url
+  `good`                 INT(11)       NULL      DEFAULT 0,                          #点赞数
+  `retransmission_nums`  INT(11)       NULL      DEFAULT 0,                          #转发量
+  `comment_nums`         INT(11)       NULL      DEFAULT 0,                          #评论量
+  `created_at`           TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          #微博创建时间
+  `come_from`            VARCHAR(30)   NULL,                                         #微博来源
   PRIMARY KEY (`message_id`),
   UNIQUE KEY `message_id_UNIQUE` (`message_id`),
   CONSTRAINT `FK_message_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
