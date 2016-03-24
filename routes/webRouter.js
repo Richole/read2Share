@@ -4,7 +4,6 @@ var index = require('../controllers/index.js');
 var weixin = require('../controllers/weixin.js');
 var multiparty = require('connect-multiparty')();
 var router = express.Router();
-
 router.get('/', index.showIndex);
 router.post('/index/userMessage', multiparty , index.userMessage);
 router.get('/index/userMessage', index.getUserMessage);

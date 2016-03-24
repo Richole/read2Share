@@ -97,7 +97,19 @@ exports.getUserMessage = function (request, response, next) {
 };
 
 exports.addGood = function (request, response, next) {
-
+  if(request.body.message_id) {
+    pool.query({
+      sql: 'update message set good=good+1 where message_id = ' + request.body.message_id,
+      success: function (res) {
+        if(res) {
+          response.json({success: true});
+        }
+      }
+    });
+  }
+  else {
+    response.json({success: false, message: 'need message_id!'})
+  }
 };
 
 exports.addComment = function (request, response, next) {
