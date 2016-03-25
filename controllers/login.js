@@ -126,7 +126,7 @@ exports.verifyMail = function (request, response, next) {
   var name = crypto.decipher(config.algorithm, config.key, arr[1]);
   var thisTime = parseInt(crypto.decipher(config.algorithm, config.key, arr[2]));
   if(new Date().getTime() - thisTime >= 3600000) {
-    response.render('login?verify=false');
+    response.redirect('/login?type=verify&verify=false');
   }
   else {
     pool.query({
