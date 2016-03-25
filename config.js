@@ -10,9 +10,9 @@ function config_module () {
   this.appsecret = '1f6c73ac481c4e6d5a5982ccdb0e55d1';            // 微信appsecret
   this.token = 'ddainn';                                          // 微信token
   this.weixinNumber = 'gh_83bf83bc4284';                          // 微信号
-  this.pictureFolderPath = '/root/work/pictures';                 // 图片存放路径
-  this.musicFolderPath = '/root/work/musics';                     // 音频存放路径
-  this.videoFolderPath = '/root/work/videos';                     // 视频存放路径
+  this.pictureFolderPath = '/root/work/pictures/';                 // 图片存放路径
+  this.musicFolderPath = '/root/work/musics/';                     // 音频存放路径
+  this.videoFolderPath = '/root/work/videos/';                     // 视频存放路径
   this.access_token = null;                                       // 微信access_token
   this.access_token_created_at = null;                            // 微信access_token过期时间
 }
