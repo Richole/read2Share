@@ -2,7 +2,6 @@ var request = require('request');
 var config = require('../config.js');
 var pool = require('../models/pool.js');
 var fs = require("fs");
-config.pictureFolderPath = "/home/richole/Pictures/";
 
 exports.showIndex = function (request, response, next) {
   if(request.session.uid) {
