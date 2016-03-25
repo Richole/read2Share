@@ -5,7 +5,7 @@ function config_module () {
   this.database = 'readToShare';                                  // 数据库名称
   this.key = 'ChenBaby';                                          // 加密密码
   this.algorithm = 'aes256';                                      // 加密算法
-  this.mailHost = 'localhost';                                    // 邮箱验证链接前缀
+  this.mailHost = '121.42.148.138';                                    // 邮箱验证链接前缀
   this.appID = 'wx1417dc4330e0eeb8';                              // 微信appID
   this.appsecret = '1f6c73ac481c4e6d5a5982ccdb0e55d1';            // 微信appsecret
   this.token = 'ddainn';                                          // 微信token
