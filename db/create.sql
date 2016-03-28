@@ -9,7 +9,7 @@ CREATE TABLE `user` (
   `email`          VARCHAR(30)   NOT NULL,                                                         -- 用户邮箱
   `password`       VARCHAR(20)   NOT NULL,                                                         -- 用户密码
   `open_id`        VARCHAR(70)   NULL,                                                             -- 用户微信绑定账号
-  `created_at`     VARCHAR(30)   NOT NULL,                                                         -- 用户创建时间
+  `created_at`     TIMESTAMP     NOT NULL  DEFAULT 0,                                              -- 用户创建时间
   `email_verify`   BOOLEAN       NULL      DEFAULT FALSE,                                          -- 邮箱验证
   `last_login_at`  TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- 用户最后登陆时间
   `last_login_ip`  VARCHAR(15)   NULL,                                                             -- 用户最后登陆ip
@@ -45,6 +45,15 @@ CREATE TABLE `comment` (
   `text`              VARCHAR(300)  NOT NULL,                                     -- 评论内容
   `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          -- 评论创建时间
   CONSTRAINT `FK_comment_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `good` (
+  `message_id`        INT(11)       NOT NULL,                                     -- 微博ID
+  `uid`               INT(11)       NOT NULL,                                     -- 用户ID
+  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          -- 点赞创建时间
+  PRIMARY KEY (`message_id`),
+  CONSTRAINT `FK_good_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_good_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 存储过程

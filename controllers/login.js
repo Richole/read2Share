@@ -45,6 +45,9 @@ exports.signIn = function (request, response, next) {
       }
       else {
         var data = {isVerify: true, message: "验证成功"};
+        var ip = request.connection.remoteAddress;
+        ip = ip.length > 15 ? ip.slice(7) : ip;
+        pool.query({sql: 'update user set last_login_ip = "{0}" where uid = "{1}"'.format(ip, res[0].uid)});
         request.session.uid = res[0].uid;
         request.session.name = res[0].name;
         request.session.head_img = res[0].head_img;
