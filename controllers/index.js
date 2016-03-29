@@ -112,16 +112,16 @@ exports.getUserMessage = function (request, response, next) {
 };
 
 exports.addGood = function (request, response, next) {
-  if(request.body.message_id && request.body.uid) {
+  if(request.body.message_id) {
     pool.query({
-      sql: 'select * from good where message_id = "{0}" and uid = "{1}"'.format(request.body.message_id, request.body.uid),
+      sql: 'select * from good where message_id = "{0}" and uid = "{1}"'.format(request.body.message_id, request.session.uid),
       success: function (res) {
         if(!res.length) {
           pool.query({
             sql: 'update message set good=good+1 where message_id = ' + request.body.message_id,
             success: function (res) {
               if(res) {
-                pool.query({sql: 'insert into good (`message_id`,`uid`) values("{0}","{1}");'.format(request.body.message_id, request.body.uid)})
+                pool.query({sql: 'insert into good (`message_id`,`uid`) values("{0}","{1}");'.format(request.body.message_id, request.session.uid)})
                 response.json({success: true});
               }
             }
@@ -151,6 +151,9 @@ exports.retransmission = function (request, response, next) {
             pool.query({sql: 'update message set retransmission_nums=retransmission_nums+1 where message_id = ' + request.body.message_id,})
             response.json({success: true});
           }
+        },
+        error: function (err) {
+          response.json({success: false, message: "你已经转发过了！"});
         }
       });
     }
