@@ -8,8 +8,9 @@
     "webpack": "sudo webpack --progress --color --watch",
     "inspector": "node-inspector",
     "livereload": "livereload",
-    "reset": "mysql -uroot -pddainn1314 readToShare < db/create.sql",
-    "backup": "mysqldump -uroot -pddainn1314 readToShare > db/backup.sql"
+    "reset": "mysql -uroot -pddainn1314 < db/create.sql",
+    "backup": "mysqldump -uroot -pddainn1314 readToShare > db/backup.sql",
+    "backin": "mysqldump -uroot -pddainn1314 readToShare < db/backup.sql"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

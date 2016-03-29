@@ -148,6 +148,7 @@ exports.retransmission = function (request, response, next) {
         sql: 'insert into message (`uid`, `other_message_id`, `text`, `image_url`, `video_url`, `thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}", "{7}")'.format(request.session.uid, request.body.message_id, '', '', '', '', '', 'WeiBo'),
         success: function (res) {
           if(res) {
+            pool.query({sql: 'update message set retransmission_nums=retransmission_nums+1 where message_id = ' + request.body.message_id,})
             response.json({success: true});
           }
         }

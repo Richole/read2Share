@@ -36,6 +36,7 @@ CREATE TABLE `message` (
   `come_from`            VARCHAR(30)    NULL,                                         -- 微博来源
   PRIMARY KEY (`message_id`),
   UNIQUE KEY `message_id_UNIQUE` (`message_id`),
+  UNIQUE KEY `other_message_id_uid_UNIQUE` (`uid`,`other_message_id`),
   CONSTRAINT `FK_message_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

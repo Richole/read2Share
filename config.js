@@ -9,7 +9,6 @@ program
   .option('-d, --development', 'use development environment')
   .option('-p, --production', 'use production environment')
   .parse(process.argv);
-
 if (program.production) {
   config = require('./config/production.js');
   console.log('using production environment');
