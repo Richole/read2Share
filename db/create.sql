@@ -21,19 +21,19 @@ CREATE TABLE `user` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `message` (
-  `message_id`           INT(11)        NOT NULL  AUTO_INCREMENT,                     -- 微博ID
-  `uid`                  INT(11)        NOT NULL,                                     -- 用户ID
-  `other_message_id`     INT(11)        NULL,                                         -- 转发拥有者ID
-  `text`                 VARCHAR(3000)  NULL,                                         -- 微博内容
-  `image_url`            TEXT           NULL,                                         -- 图片url
-  `video_url`            VARCHAR(100)   NULL,                                         -- 视频url
-  `thumb_video_url`      VARCHAR(100)   NULL,                                         -- 视频缩略图url
-  `music_url`            VARCHAR(100)   NULL,                                         -- 音乐url
-  `good`                 INT(11)        NULL      DEFAULT 0,                          -- 点赞数
-  `retransmission_nums`  INT(11)        NULL      DEFAULT 0,                          -- 转发量
-  `comment_nums`         INT(11)        NULL      DEFAULT 0,                          -- 评论量
-  `created_at`           TIMESTAMP      NULL      DEFAULT CURRENT_TIMESTAMP,          -- 微博创建时间
-  `come_from`            VARCHAR(30)    NULL,                                         -- 微博来源
+  `message_id`           INT(11)        NOT NULL  AUTO_INCREMENT,             -- 微博ID
+  `uid`                  INT(11)        NOT NULL,                             -- 用户ID
+  `other_message_id`     INT(11)        NULL,                                 -- 转发拥有者ID
+  `text`                 VARCHAR(3000)  NULL,                                 -- 微博内容
+  `image_url`            TEXT           NULL,                                 -- 图片url
+  `video_url`            VARCHAR(100)   NULL,                                 -- 视频url
+  `thumb_video_url`      VARCHAR(100)   NULL,                                 -- 视频缩略图url
+  `music_url`            VARCHAR(100)   NULL,                                 -- 音乐url
+  `good`                 INT(11)        NULL      DEFAULT 0,                  -- 点赞数
+  `retransmission_nums`  INT(11)        NULL      DEFAULT 0,                  -- 转发量
+  `comment_nums`         INT(11)        NULL      DEFAULT 0,                  -- 评论量
+  `created_at`           TIMESTAMP      NULL      DEFAULT CURRENT_TIMESTAMP,  -- 微博创建时间
+  `come_from`            VARCHAR(30)    NULL,                                 -- 微博来源
   PRIMARY KEY (`message_id`),
   UNIQUE KEY `message_id_UNIQUE` (`message_id`),
   UNIQUE KEY `other_message_id_uid_UNIQUE` (`uid`,`other_message_id`),
@@ -41,18 +41,17 @@ CREATE TABLE `message` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `comment` (
-  `message_id`        INT(11)       NOT NULL,                                     -- 微博ID
-  `uid`               INT(11)       NOT NULL,                                     -- 用户ID
-  `text`              VARCHAR(300)  NOT NULL,                                     -- 评论内容
-  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          -- 评论创建时间
+  `message_id`        INT(11)       NOT NULL,                             -- 微博ID
+  `uid`               INT(11)       NOT NULL,                             -- 用户ID
+  `text`              VARCHAR(300)  NOT NULL,                             -- 评论内容
+  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,  -- 评论创建时间
   CONSTRAINT `FK_comment_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `good` (
-  `message_id`        INT(11)       NOT NULL,                                     -- 微博ID
-  `uid`               INT(11)       NOT NULL,                                     -- 用户ID
-  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,          -- 点赞创建时间
-  PRIMARY KEY (`message_id`),
+  `message_id`        INT(11)       NOT NULL,                             -- 微博ID
+  `uid`               INT(11)       NOT NULL,                             -- 用户ID
+  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,  -- 点赞创建时间
   CONSTRAINT `FK_good_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_good_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

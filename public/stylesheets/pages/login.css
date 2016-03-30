@@ -1,0 +1,192 @@
+﻿@charset "UTF-8";
+.rts-login * {
+  font-family: Open-Sans-Light;
+}
+.rts-login .login-animition {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: gray;
+  opacity: 1;
+  transition: 1.5s;
+  -moz-transition: 1.5s;
+  -o-transition: 1.5s;
+  -webkit-transition: 1.5s;
+}
+.rts-login .login-animition.animition-start {
+  opacity: 0;
+}
+.rts-login .page-container {
+  z-index: 11;
+}
+
+body {
+  z-index: 1;
+  font-size: 12px;
+  margin-top: 5px;
+  font-family: "SimSun", "宋体", "Arial Narrow";
+}
+body * {
+  font-weight: 100 !important;
+}
+body .rts-body {
+  position: relative;
+  padding-top: 80px;
+  z-index: 100;
+}
+body img {
+  width: 100%;
+  position: fixed;
+  z-index: -99;
+}
+body .rts-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+body .rts-title h2 {
+  color: #FFF;
+  margin: 0px auto;
+  font-size: 33px;
+  font-weight: bold !important;
+  font-family: monospace;
+}
+body .page-container {
+  width: 360px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  margin: 0 auto;
+  padding: 20px 25px;
+  border-radius: 5px;
+}
+body .page-container h3 {
+  opacity: 0.8;
+  color: #FFF;
+  font-size: 23px;
+  margin-bottom: 25px !important;
+  margin-top: 10px;
+}
+body .page-container .rts-account, body .page-container .rts-password, body .page-container .P, body .page-container .rts-register-phone, body .page-container .rts-register-name, body .page-container .rts-register-email, body .page-container .rts-register-password, body .page-container .rts-register-password-repeat {
+  position: relative;
+}
+body .page-container .rts-account > input, body .page-container .rts-password > input, body .page-container .P > input, body .page-container .rts-register-phone > input, body .page-container .rts-register-name > input, body .page-container .rts-register-email > input, body .page-container .rts-register-password > input, body .page-container .rts-register-password-repeat > input {
+  z-index: 101;
+  padding: 6px 35px;
+  margin-bottom: 15px;
+}
+body .page-container .rts-account > i, body .page-container .rts-password > i, body .page-container .P > i, body .page-container .rts-register-phone > i, body .page-container .rts-register-name > i, body .page-container .rts-register-email > i, body .page-container .rts-register-password > i, body .page-container .rts-register-password-repeat > i {
+  position: absolute;
+  z-index: 102;
+  color: #DDD;
+  top: 10px;
+  left: 10px;
+}
+body .page-container .rts-account > i:last-child, body .page-container .rts-password > i:last-child, body .page-container .P > i:last-child, body .page-container .rts-register-phone > i:last-child, body .page-container .rts-register-name > i:last-child, body .page-container .rts-register-email > i:last-child, body .page-container .rts-register-password > i:last-child, body .page-container .rts-register-password-repeat > i:last-child {
+  right: 10px;
+  left: initial;
+  cursor: pointer;
+}
+body .page-container .rts-account > i.glyphicon-ok, body .page-container .rts-password > i.glyphicon-ok, body .page-container .P > i.glyphicon-ok, body .page-container .rts-register-phone > i.glyphicon-ok, body .page-container .rts-register-name > i.glyphicon-ok, body .page-container .rts-register-email > i.glyphicon-ok, body .page-container .rts-register-password > i.glyphicon-ok, body .page-container .rts-register-password-repeat > i.glyphicon-ok {
+  color: green;
+}
+body .page-container .rts-account > i.glyphicon-remove, body .page-container .rts-password > i.glyphicon-remove, body .page-container .P > i.glyphicon-remove, body .page-container .rts-register-phone > i.glyphicon-remove, body .page-container .rts-register-name > i.glyphicon-remove, body .page-container .rts-register-email > i.glyphicon-remove, body .page-container .rts-register-password > i.glyphicon-remove, body .page-container .rts-register-password-repeat > i.glyphicon-remove {
+  color: red;
+}
+body .page-container .rts-remember {
+  margin-bottom: 40px;
+}
+body .page-container .rts-remember div:first-child {
+  float: left;
+}
+body .page-container .rts-remember div:first-child input {
+  margin-left: 1px;
+  margin-right: 10px;
+}
+body .page-container .rts-remember div:first-child a {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  color: #FFF;
+  top: 3px;
+}
+body .page-container .rts-remember div:last-child {
+  position: relative;
+  width: 24%;
+  float: right;
+  margin-right: 1px;
+}
+body .page-container .rts-remember div:last-child * {
+  color: #CCC;
+}
+body .page-container .rts-remember div:last-child i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+body .page-container .rts-remember div:last-child input {
+  width: 100%;
+  padding-left: 0px;
+  background-color: #2C3E50;
+  border-radius: 5px;
+  border: solid 1px #2C3E50;
+  z-index: 11;
+}
+body .page-container .rts-remember div:last-child input:hover {
+  background-color: #1F2B39;
+}
+body .page-container .rts-reset {
+  margin-bottom: 20px;
+}
+body .page-container .rts-reset * {
+  display: inline;
+}
+body .page-container .rts-reset a {
+  color: #36648b;
+}
+body .page-container .rts-create, body .page-container .rts-loginAction {
+  padding-top: 20px;
+  border-top: 1px dotted #eee;
+}
+body .page-container .rts-create *, body .page-container .rts-loginAction * {
+  display: inline;
+}
+body .page-container .rts-create > label, body .page-container .rts-loginAction > label {
+  margin-left: 18%;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+body .page-container .rts-create a, body .page-container .rts-loginAction a {
+  color: #36648b;
+}
+body .page-container .rts-register-register {
+  position: relative;
+  width: 24%;
+  margin-right: 1px;
+  margin-bottom: 20px;
+}
+body .page-container .rts-register-register * {
+  color: #CCC;
+}
+body .page-container .rts-register-register i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+body .page-container .rts-register-register input {
+  width: 100%;
+  padding-left: 0px;
+  background-color: #2C3E50;
+  border-radius: 5px;
+  border: solid 1px #2C3E50;
+  z-index: 11;
+}
+body .page-container .rts-register-register input:hover {
+  background-color: #1F2B39;
+}
+.verify-box p, .unverify-box p {
+  display: inline;
+}
