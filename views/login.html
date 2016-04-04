@@ -48,7 +48,7 @@
           </div>
           <div class="rts-reset">
             <p>不用担心，点击</p>
-            <a href="" target="_parent">这里</a>
+            <a href="#" target="_parent">这里</a>
             <p>重置密码</p>
           </div>
           <div class="rts-create">
@@ -94,7 +94,7 @@
             <input type="reset" class="hide" id="register-reset" />
           </form>
           <div class="rts-loginAction">
-            <label>以有一个账户？</label>
+            <label>已有一个账户？</label>
             <a href="#" target="_parent">登录</a>
           </div>
         </div>
@@ -112,7 +112,34 @@
             <p>重新注册</p>
           </div>
         </div>
-        <div class="rts-find-container" style="display: none;"></div>
+        <div class="rts-find-container" style="display: none;">
+          <div class="rts-find-title">
+            <h3>找回密码</h3>
+            <label>在下面输入您的基本资料</label>
+          </div>
+          <form id="rts-findform">
+            <div class="rts-find-phone">
+              <i class="glyphicon glyphicon-phone"></i>
+              <input type="text" placeholder="手机" class="form-control" name="phone">
+            </div>
+            <div class="rts-find-email">
+              <i class="glyphicon glyphicon-envelope"></i>
+              <input type="text" placeholder="电子邮箱" class="form-control" name="email">
+            </div>
+            <div class="rts-identify-code" style="display: none;">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="text" placeholder="验证码" class="form-control" name="password">
+            </div>
+            <div class="rts-reset-container">
+              <input type="button" class="form-control" value="找回密码" id="rts-reset" />
+            </div>
+            <div class="rts-findAction">
+            <label>已有一个账户？</label>
+            <a href="#" target="_parent">登录</a>
+          </div>
+            <input type="reset" class="hide" id="register-reset" />
+          </form>
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="/webpack_bundle/common.bundle.js"></script>
