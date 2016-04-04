@@ -20,6 +20,9 @@ router.post('/login/signUp', login.signUp);
 router.get('/login/checkPhone', login.checkPhone);
 router.get('/login/checkEmail', login.checkEmail);
 router.get('/login/verify', login.verifyMail);
+router.post('/login/findVerify', login.findVerify);
+router.post('/login/verifyIdentityCode', login.verifyIdentityCode);
+router.post('/login/modifyPassword', login.modifyPassword);
 module.exports = router;
 
 //微信模块

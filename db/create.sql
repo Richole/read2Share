@@ -56,6 +56,13 @@ CREATE TABLE `good` (
   CONSTRAINT `FK_good_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `identifyCode` (
+  `uid`         INT(11)     NOT NULL,                             -- 用户ID
+  `code`        VARCHAR(6)  NOT NULL,                             -- 验证码
+  `created_at`  TIMESTAMP   NULL      DEFAULT CURRENT_TIMESTAMP,  -- 验证码创建时间
+  CONSTRAINT `FK_identifyCode_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 存储过程
 -- DROP PROCEDURE IF EXISTS procedure_retransmission;
 -- DELIMITER //

@@ -62,13 +62,20 @@ exports.signIn = function (request, response, next) {
 };
 
 exports.signUp = function (request, response, next) {
-  var created_at = new Date().format("YYYY-MM-DD hh:mm:ss");;
+  var created_at = new Date().format("YYYY-MM-DD hh:mm:ss");
   if(request.body)
   pool.query({
     sql: 'insert into user (`name`,`phone`,`email`,`password`, `created_at`) values("{0}","{1}","{2}","{3}","{4}")'.format(request.body.user, request.body.phone, request.body.email, request.body.password, created_at),
     success: function (res) {
       if(res) {
-        mail.sendMail(request.body.email, request.body.user);
+        var thisTime = new Date().getTime();
+        var newMail = crypto.cipher(config.algorithm, config.key, request.body.email);
+        var newName = crypto.cipher(config.algorithm, config.key, request.body.user);
+        thisTime = crypto.cipher(config.algorithm, config.key, thisTime.toString());
+        var verifyUrl = "http://{0}/login/verify?verifyStr={1}-{2}-{3}".format(config.mailHost, newMail, newName, thisTime);
+        var subject = '阅读分享系统---readToShare 邮箱验证';
+        var html = '<p>请务必在一小时内验证，一小时后链接将失效</p><br/><a href="{0}">Hi {1} ,点击验证邮箱,消息来自readToShare，阅读信息分享平台</a><br/><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=vM7V39TT0NmSxcn8zc2S39PR">如果有任何问题，欢迎点我发送邮件咨询</a>'.format(verifyUrl, request.body.user);
+        mail.sendMail(request.body.email, subject, html);
         response.json({isSignUp: true, message: "验证邮件已发送到邮箱，请在1小时内点击里面的验证链接完成注册."});
       }
     },
@@ -77,7 +84,7 @@ exports.signUp = function (request, response, next) {
         response.json({isSignUp: false, message: "注册失败"});
       }
     }
-  })
+  });
 };
 
 exports.checkEmail = function (request, response, next) {
@@ -145,5 +152,75 @@ exports.verifyMail = function (request, response, next) {
         }
       }
     });
+  }
+};
+
+exports.findVerify = function (request, response, next) {
+  if(!request.body.phone || !request.body.email) {
+    response.json({"isVerify": false, "message": "请输入手机号和邮箱"});
+  }
+  else {
+    pool.query({
+      sql: `select * from user where email = "${request.body.email}" and phone = "${request.body.phone}"`,
+      success: function (res) {
+        var code = parseInt(Math.random()*1000000);
+        request.session.verifyUid = res[0].uid;
+        var html = `<html><p>您本次修改密码的验证是<strong>${code}</strong>，验证码将于15分钟后失效。</p></html>`;
+        var subject = "阅读信息分享平台---密码重置"
+        mail.sendMail(request.body.email, subject, html);
+        pool.query({sql: 'insert into identifyCode (`uid`,`code`) values("{0}", "{1}")'.format(res[0].uid, code)});
+        response.json({"isVerify": true, "message": "验证码已经发送至邮箱，验证码将在15分钟后失效"});
+      },
+      error: function (err) {
+        response.json({"isVerify": false, "message": "验证错误，手机与邮箱不对应"});
+      }
+    });
+  }
+};
+
+exports.verifyIdentityCode = function (request, response, next) {
+  if(request.session.verifyUid || request.body.code) {
+    pool.query({
+      sql: `select * from identifyCode where uid = ${request.session.verifyUid} and code = ${request.body.code} order by created_at desc limit 1;`,
+      success: function (res) {
+        if(res.length) {
+          request.session.findVerify = true;
+          response.json({"isVerify": true});
+        }
+        else {
+          response.json({"isVerify": false, message: "验证码不正确"});
+        }
+      }
+    });
+  }
+  else if (!request.body.code) {
+    response.json({"isVerify": false, "message": "缺少参数code"});
+  }
+  else {
+    response.json({"isVerify": false, "message": "请先输入手机号和邮箱进行验证"});
+  }
+};
+
+exports.modifyPassword = function (request, response, next) {
+  if(request.session.findVerify && request.body.password && request.session.verifyUid) {
+    pool.query({
+      sql: `update user set password = "${request.body.password}" where uid = "${request.session.verifyUid}"`,
+      success: function (res) {
+        if(res) {
+          response.json({"isVerify": true, "message": "密码修改成功"});
+        }
+      },
+      error: function (err) {
+        if(err) {
+          response.json({"isVerify": false, "message": "密码修改失败"});
+        }
+      }
+    })
+  }
+  else if (!request.body.password) {
+    response.json({"isVerify": false, "message": "缺少参数password"});
+  }
+  else {
+    response.json({"isVerify": false, "message": "请先验证验证码"});
   }
 };
