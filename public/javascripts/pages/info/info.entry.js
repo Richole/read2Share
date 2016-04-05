@@ -1,0 +1,1 @@
+var details = require('details.js');

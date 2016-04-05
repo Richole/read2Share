@@ -2,6 +2,7 @@ var express = require('express');
 var login = require('../controllers/login.js');
 var index = require('../controllers/index.js');
 var weixin = require('../controllers/weixin.js');
+var info = require('../controllers/info.js');
 var multiparty = require('connect-multiparty')();
 var router = express.Router();
 //首页模块
@@ -23,8 +24,14 @@ router.get('/login/verify', login.verifyMail);
 router.post('/login/findVerify', login.findVerify);
 router.post('/login/verifyIdentityCode', login.verifyIdentityCode);
 router.post('/login/modifyPassword', login.modifyPassword);
-module.exports = router;
 
 //微信模块
 router.get('/weixin', weixin.checkSignature);
 router.post('/weixin', weixin.weixinEvent);
+
+//详情模块
+router.get('/info', info.showInfo);
+
+module.exports = router;
+
+

@@ -21,7 +21,8 @@ var config = {
     // pc公共入口文件
     "common": "common.entry.js",
     "login": "login.entry.js",
-    "index": "index.entry.js"
+    "index": "index.entry.js",
+    "info": "info.entry.js"
   },
   output: {
     path: "./public/webpack_bundle",  // 出口文件路径
@@ -49,6 +50,7 @@ var config = {
             "/public/javascripts/pages",
             "/public/javascripts/pages/login",
             "/public/javascripts/pages/index",
+            "/public/javascripts/pages/info",
             "/public/javascripts/plugins",
             "/public/stylesheets/commons",
             "/public/stylesheets/pages",

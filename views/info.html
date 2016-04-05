@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Read to share" name="description"/>
+  <meta content="richole" name="author"/>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+  <title>阅读分享平台</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/pages/index.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/pages/info.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/commons/initial.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/plugins/bootstrap.css" />
+</head>
+<body>
+  <div class="rts-background"></div>
+  <div class="rts-header">
+    <nav>
+      <ul class="rts-nav clearfix">
+        <li>
+          <a href="/">
+            <img src="<%= head_img || '/images/icon.jpg' %>" class="rts-icon" />
+          </a>
+        </li>
+        <li class="search-nav">
+          <input type="text" class="form-control header-search" placeholder="大家正在搜：女生的脸不能乱吹" />
+          <i class="glyphicon glyphicon-search header-search-icon"></i>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <i class="glyphicon glyphicon-heart-empty"></i>
+            我的关注
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <i class="glyphicon glyphicon-cloud"></i>
+            我的动态
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <i class="glyphicon glyphicon-user"></i>
+            <%= name %>
+          </a>
+        </li>
+        <li>
+          <a href="/login/signOut">
+            <i class="glyphicon glyphicon-log-out"></i>
+            退出
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="rts-body">
+  </div>
+  <script type="text/javascript" src="/webpack_bundle/common.bundle.js"></script>
+  <script type="text/javascript" src="/webpack_bundle/info.bundle.js"></script>
+</body>
+</html>
