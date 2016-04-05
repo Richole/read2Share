@@ -112,7 +112,7 @@
             <p>重新注册</p>
           </div>
         </div>
-        <div class="rts-find-container" style="display: none;">
+        <div class="rts-find-container" style="display: none;" id="rts-find-container1">
           <div class="rts-find-title">
             <h3>找回密码</h3>
             <label>在下面输入您的基本资料</label>
@@ -131,7 +131,31 @@
               <input type="text" placeholder="验证码" class="form-control" name="password">
             </div>
             <div class="rts-reset-container">
-              <input type="button" class="form-control" value="找回密码" id="rts-reset" />
+              <input type="button" class="form-control" value="发送验证码" id="rts-reset" />
+            </div>
+            <div class="rts-findAction">
+            <label>已有一个账户？</label>
+            <a href="#" target="_parent">登录</a>
+          </div>
+            <input type="reset" class="hide" id="register-reset" />
+          </form>
+        </div>
+        <div class="rts-find-container" style="display: none;" id="rts-find-container2">
+          <div class="rts-find-title">
+            <h3>重置密码</h3>
+            <label>请重新设置您的密码</label>
+          </div>
+          <form id="rts-findform">
+            <div class="rts-find-password">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="password" placeholder="新的密码" class="form-control" name="new-password">
+            </div>
+            <div class="rts-find-againPassword">
+              <i class="glyphicon glyphicon-lock"></i>
+              <input type="password" placeholder="再一次密码" class="form-control" name="again-password">
+            </div>
+            <div class="rts-reset-container">
+              <input type="button" class="form-control" value="完成" id="rts-reset2" />
             </div>
             <div class="rts-findAction">
             <label>已有一个账户？</label>

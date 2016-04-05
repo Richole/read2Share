@@ -68,15 +68,15 @@ body .page-container h3 {
   margin-bottom: 25px !important;
   margin-top: 10px;
 }
-body .page-container .rts-account, body .page-container .rts-password, body .page-container .P, body .page-container .rts-register-phone, body .page-container .rts-register-name, body .page-container .rts-register-email, body .page-container .rts-register-password, body .page-container .rts-register-password-repeat ,.rts-find-phone , .rts-find-email , .rts-identify-code{
+body .page-container .rts-account, body .page-container .rts-password, body .page-container .P, body .page-container .rts-register-phone, body .page-container .rts-register-name, body .page-container .rts-register-email, body .page-container .rts-register-password, body .page-container .rts-register-password-repeat ,.rts-find-phone , .rts-find-email , .rts-identify-code, .rts-find-password , .rts-find-againPassword{
   position: relative;
 }
-body .page-container .rts-account > input, body .page-container .rts-password > input, body .page-container .P > input, body .page-container .rts-register-phone > input, body .page-container .rts-register-name > input, body .page-container .rts-register-email > input, body .page-container .rts-register-password > input, body .page-container .rts-register-password-repeat > input  ,.rts-find-phone  > input , .rts-find-email > input , .rts-identify-code > input{
+body .page-container .rts-account > input, body .page-container .rts-password > input, body .page-container .P > input, body .page-container .rts-register-phone > input, body .page-container .rts-register-name > input, body .page-container .rts-register-email > input, body .page-container .rts-register-password > input, body .page-container .rts-register-password-repeat > input  ,.rts-find-phone  > input , .rts-find-email > input , .rts-identify-code > input ,  .rts-find-password > input , .rts-find-againPassword >input{
   z-index: 101;
   padding: 6px 35px;
   margin-bottom: 15px;
 }
-body .page-container .rts-account > i, body .page-container .rts-password > i, body .page-container .P > i, body .page-container .rts-register-phone > i, body .page-container .rts-register-name > i, body .page-container .rts-register-email > i, body .page-container .rts-register-password > i, body .page-container .rts-register-password-repeat > i ,.rts-find-phone  > i ,.rts-find-email > i , .rts-identify-code > i{
+body .page-container .rts-account > i, body .page-container .rts-password > i, body .page-container .P > i, body .page-container .rts-register-phone > i, body .page-container .rts-register-name > i, body .page-container .rts-register-email > i, body .page-container .rts-register-password > i, body .page-container .rts-register-password-repeat > i ,.rts-find-phone  > i ,.rts-find-email > i , .rts-identify-code > i,  .rts-find-password > i , .rts-find-againPassword > i{
   position: absolute;
   z-index: 102;
   color: #DDD;
@@ -167,7 +167,7 @@ body .page-container .rts-register-register ,.rts-reset-container{
   margin-right: 1px;
   margin-bottom: 20px;
 }
-body .page-container .rts-register-register * , #rts-reset {
+body .page-container .rts-register-register * , #rts-reset ,#rts-reset2{
   color: #CCC;
 }
 body .page-container .rts-register-register i {
@@ -190,6 +190,7 @@ body .page-container .rts-register-register input:hover ,.rts-reset-container in
 .verify-box p, .unverify-box p {
   display: inline;
 }
-#rts-reset {
+#rts-reset , #rts-reset2{
   padding:6px;
+  width: initial;
 }
