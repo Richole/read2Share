@@ -1,0 +1,6 @@
+{
+  "eqeqeq": true,      // ！== ===
+  "esnext": true,      // 允许ES6
+  "sub": true,         // 允许person['name'] 和 person.name
+  "trailing": true     // 行尾不允许空白
+}
