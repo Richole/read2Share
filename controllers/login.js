@@ -166,11 +166,11 @@ exports.findVerify = function (request, response, next) {
         if(res.length) {
           var code = parseInt(Math.random()*1000000);
           request.session.verifyUid = res[0].uid;
-          var html = `<html><p>您本次修改密码的验证是<strong>${code}</strong>，验证码将于15分钟后失效。</p></html>`;
+          var html = `<html><p>您本次修改密码的验证是<strong>${code}</strong>，验证码只对本次修改有效。</p></html>`;
           var subject = "阅读信息分享平台---密码重置";
           mail.sendMail(request.body.email, subject, html);
           pool.query({sql: 'insert into identifyCode (`uid`,`code`) values("{0}", "{1}")'.format(res[0].uid, code)});
-          response.json({"isVerify": true, "message": "验证码已经发送至邮箱，验证码将在15分钟后失效"});
+          response.json({"isVerify": true, "message": "验证码已经发送至邮箱，验证码只对本次修改有效"});
         }
         else {
           response.json({"isVerify": false, "message" :"验证错误, 手机与邮箱不对应"});

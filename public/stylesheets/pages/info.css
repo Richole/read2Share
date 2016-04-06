@@ -1,0 +1,47 @@
+.rts-body-font-background{
+  width: 950px;
+  height: 300px;
+  margin: 48px auto 0px;
+  background-image: url(/images/007.jpg);
+}
+.rts-body{
+  padding-top:10px;
+}
+.user-img{
+  text-align: center;
+}
+.user-img img{
+  width: 100px;
+  height: 100px;
+  margin: 50px auto 0px;
+  border-radius: 50%;
+  border: solid 4px #DDD;
+}
+.user-img img:hover{
+  cursor: pointer;
+}
+.user-info-name{
+  text-align: center;
+  color: #FFF;
+  font-size: 30px;
+  font-family: inherit;
+}
+div.content{
+  background-color: #FFF;
+  width: 950px;
+  height: 40px;
+  margin: 0px auto;
+}
+.content1{
+  text-align: right;
+}
+.content2{
+  text-align: center;
+}
+.content3{
+  text-align: left;
+}
+.col1:hover{
+  border-bottom: solid 2px #f7691d;
+  padding-bottom: 4px;
+}
