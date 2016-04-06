@@ -190,7 +190,8 @@ a:hover, a:active {
   padding: 10px 15px;
 }
 .wb-images img {
-  width: 180px;
+  width: 180px !important;
+  height: 180px !important;
   padding: 3px;
 }
 .wb-video video {

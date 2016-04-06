@@ -41,26 +41,33 @@ CREATE TABLE `message` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `comment` (
-  `message_id`        INT(11)       NOT NULL,                             -- 微博ID
-  `uid`               INT(11)       NOT NULL,                             -- 用户ID
-  `text`              VARCHAR(300)  NOT NULL,                             -- 评论内容
-  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,  -- 评论创建时间
+  `message_id`        INT(11)       NOT NULL,                              -- 微博ID
+  `uid`               INT(11)       NOT NULL,                              -- 用户ID
+  `text`              VARCHAR(300)  NOT NULL,                              -- 评论内容
+  `created_at`        TIMESTAMP     NULL       DEFAULT CURRENT_TIMESTAMP,  -- 评论创建时间
   CONSTRAINT `FK_comment_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `good` (
-  `message_id`        INT(11)       NOT NULL,                             -- 微博ID
-  `uid`               INT(11)       NOT NULL,                             -- 用户ID
-  `created_at`        TIMESTAMP     NULL      DEFAULT CURRENT_TIMESTAMP,  -- 点赞创建时间
+  `message_id`        INT(11)       NOT NULL,                              -- 微博ID
+  `uid`               INT(11)       NOT NULL,                              -- 用户ID
+  `created_at`        TIMESTAMP     NULL       DEFAULT CURRENT_TIMESTAMP,  -- 点赞创建时间
   CONSTRAINT `FK_good_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_good_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `identifyCode` (
-  `uid`         INT(11)     NOT NULL,                             -- 用户ID
-  `code`        VARCHAR(6)  NOT NULL,                             -- 验证码
-  `created_at`  TIMESTAMP   NULL      DEFAULT CURRENT_TIMESTAMP,  -- 验证码创建时间
+  `uid`         INT(11)     NOT NULL,                              -- 用户ID
+  `code`        VARCHAR(6)  NOT NULL,                              -- 验证码
+  `created_at`  TIMESTAMP   NULL       DEFAULT CURRENT_TIMESTAMP,  -- 验证码创建时间
   CONSTRAINT `FK_identifyCode_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `care` (
+  `uid`         INT(11)     NOT NULL,                              -- 用户ID
+  `careId`      INT(11)     NOT NULL,                              -- 关注用户ID
+  `created_at`  TIMESTAMP   NULL       DEFAULT CURRENT_TIMESTAMP,  -- 关注创建时间
+  CONSTRAINT `FK_care_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 存储过程
