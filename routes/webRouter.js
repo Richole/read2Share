@@ -4,6 +4,7 @@ var index = require('../controllers/index.js');
 var weixin = require('../controllers/weixin.js');
 var info = require('../controllers/info.js');
 var book = require('../controllers/book.js');
+var backstage = require('../controllers/backstage.js');
 var multiparty = require('connect-multiparty')();
 var router = express.Router();
 //首页模块
@@ -38,6 +39,7 @@ router.get('/info/showDetails', info.showDetails);
 router.get('/book_center', book.showCenter);
 router.get('/book_details', book.book_details);
 
+//后台模块
+router.get('/backstage', backstage.showBackstage);
+
 module.exports = router;
-
-

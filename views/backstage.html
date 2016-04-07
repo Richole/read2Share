@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>阅读信息分享平台后台管理系统</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/plugins/bootstrap.css" />
+</head>
+<body>
+  <div class="panel panel-flat">
+    <div class="panel-heading">
+    		<h5 class="panel-title">书籍管理模块</h5>
+    </div>
+    <div class="panel-body">
+    	<form class="form-horizontal" action="#">
+    		<fieldset class="content-group">
+    			<legend class="text-bold">书籍信息录入</legend>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">书籍名称</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="name">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">作者</label>
+    				<div class="col-lg-10">
+    					<input type="password" class="form-control" name="author">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">出版时间</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="publish_time">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">出版社</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="publishing">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">书号</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="book_number">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">刊号</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" value="publish_number">
+    				</div>
+    			</div>
+          <div class="form-group">
+            <label class="control-label col-lg-2">语种</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" name="language">
+            </div>
+          </div>
+          <div class="form-group">
+          	<label class="control-label col-lg-2">归类</label>
+          	<div class="col-lg-10">
+                <select name="book_type" class="form-control">
+                    <option value="opt1">小说</option>
+                    <option value="opt2">文学</option>
+                    <option value="opt3">艺术与摄影</option>
+                    <option value="opt4">传记</option>
+                    <option value="opt5">励志与成功</option>
+                    <option value="opt6">考试</option>
+                    <option value="opt7">大中专教材辅导</option>
+                    <option value="opt8">中小学教辅</option>
+                </select>
+              </div>
+          </div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">条形码</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="br_code">
+    				</div>
+    			</div>
+          <div class="form-group">
+    				<label class="control-label col-lg-2">书籍图片</label>
+    				<div class="col-lg-10">
+    					<input type="file" name="images" accept="image/png,image/gif,image/jpg,image/jpeg" />
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2 cursor-pointer" for="clickable-label">页数</label>
+    				<div class="col-lg-10">
+    					<input type="text" class="form-control" name="page_num">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">书籍简介</label>
+    				<div class="col-lg-10">
+    					<textarea cols="20" class="form-control" name="book_profile"></textarea>
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label class="control-label col-lg-2">作者简介</label>
+    				<div class="col-lg-10">
+    					<textarea cols="20" class="form-control" name="author_profile"></textarea>
+    				</div>
+    			</div>
+    		</fieldset>
+    		<div class="text-right">
+    			<button type="submit" class="btn btn-primary">录入</button>
+    		</div>
+    	</form>
+    </div>
+  </div>
+  <script type="text/javascript" src="/webpack_bundle/common.bundle.js"></script>
+</body>
+</html>

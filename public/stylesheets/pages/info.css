@@ -41,7 +41,8 @@ div.content{
 .content3{
   text-align: left;
 }
-.col1:hover{
+.col-content:hover{
   border-bottom: solid 2px #f7691d;
   padding-bottom: 4px;
+  cursor: pointer;
 }

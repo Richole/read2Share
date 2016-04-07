@@ -5,13 +5,10 @@ var fs = require("fs");
 
 exports.showIndex = function (request, response, next) {
   if(request.session.uid) {
-    response.render(
-      'index',
-      {
-        name: request.session.name,
-        head_img: request.session.head_img
-      }
-    );
+    response.render( 'index', {
+      name: request.session.name,
+      head_img: request.session.head_img
+    });
   }
   else {
     response.redirect('/login');

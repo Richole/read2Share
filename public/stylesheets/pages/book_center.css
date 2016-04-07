@@ -1,0 +1,36 @@
+.rts-wraper {
+  margin: 48px auto; 0px;
+  padding-top: 10px;
+  width: 94%;
+}
+.book-title {
+  font-size: 21px;
+}
+.book-list {
+  padding-left: 10px;
+}
+.book-list a {
+  color: #444;
+  font-size: 15px;
+}
+.left-side-bar {
+  padding-left: 20px;
+  padding-right: 0px;
+  border-right: solid 1px #DDD;
+}
+.rts-carousel {
+  max-width: 1500px;
+  width: 100%;
+}
+.book-img {
+  float: left;
+}
+.book-description {
+  display: block;
+}
+.books-show {
+  padding-top: 20px;
+}
+.books-box {
+  padding: 20px 30px;
+}
