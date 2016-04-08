@@ -70,6 +70,26 @@ CREATE TABLE `care` (
   CONSTRAINT `FK_care_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `book` (
+  `book_id`            INT(11)        NOT NULL  AUTO_INCREMENT,             -- 用户ID
+  `book_author`        VARCHAR(100)   NOT NULL,                             -- 用户ID
+  `publish_time`       VARCHAR(30)    NOT NULL,                             -- 用户ID
+  `publishing`         VARCHAR(30)    NOT NULL,                             -- 用户ID
+  `book_name`          VARCHAR(50)    NOT NULL,                             -- 用户ID
+  `foreign_book_name`  VARCHAR(50)    NULL,                                 -- 用户ID
+  `page_num`           VARCHAR(20)    NULL,                                 -- 用户ID
+  `book_language`      VARCHAR(20)    NULL,                                 -- 用户ID
+  `book_type`          VARCHAR(20)    NOT NULL,                             -- 用户ID
+  `author_profile`     VARCHAR(3000)  NULL,                                 -- 关注用户ID
+  `catalogue`          VARCHAR(3000)  NULL,                                 -- 关注用户ID
+  `introduction`       VARCHAR(3000)  NULL,                                 -- 关注用户ID
+  `abstract`           VARCHAR(3000)  NULL,                                 -- 关注用户ID
+  `share_num`          INT(11)        NULL      DEFAULT 0,                  -- 关注用户ID
+  `search_num`         INT(11)        NULL      DEFAULT 0,                  -- 关注用户ID    
+  `created_at`         TIMESTAMP      NULL      DEFAULT CURRENT_TIMESTAMP,  -- 关注创建时间
+  PRIMARY KEY (`book_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 存储过程
 -- DROP PROCEDURE IF EXISTS procedure_retransmission;
 -- DELIMITER //
