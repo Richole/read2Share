@@ -1,14 +1,16 @@
 var model = $('.book-model');
 var model1 = $('.book2-model');
 
-$.get('/test.json', {type: $(this).attr('data-type')}, function (res) {
+$.get('/backstage/bookNews', {type: $(this).attr('data-type')}, function (res) {
   $('.books-show').empty();
   for(var i = 0; i < res.data.length; i++) {
     var cloneObj = model.clone();
     cloneObj.removeClass('book-model');
-    cloneObj.find('img').attr('src', res.data[i].url);
-    cloneObj.find('a').text(res.data[i].book_name);
+    cloneObj.find('img').attr('src', res.data[i].book_img_url);
+    cloneObj.find('div a').text(res.data[i].book_name);
     cloneObj.find('.book-author').text(res.data[i].book_author);
+    cloneObj.find('div a').attr('href','/book_details/' + res.data[i].book_id);
+    cloneObj.find('> a').attr('href','/book_details/' + res.data[i].book_id);
     $('.books-show').append(cloneObj);
   }
 });
