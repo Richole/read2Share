@@ -24,6 +24,7 @@ li.search-nav {
   width: 310px;
   display: block;
   margin: 0px auto;
+  padding-bottom: 20px;
 }
 .detials-body-left{
   text-align: center;
@@ -31,9 +32,13 @@ li.search-nav {
 .detials-body-right *{
   text-align: left;
 }
+.detials-body-right h3{
+  margin-top: 0px;
+}
 .detials-end{
   width: 980px;
   margin: 0px auto;
+  padding-top: 20px;
 }
 .end1-title{
   border-left: solid 2px red;
@@ -45,9 +50,20 @@ li.search-nav {
   font-size: 16px;
   font-weight: bold;
 }
-.end1-content p , .detials-body-right p{
+.end1-content p {
   padding: 10px 5px;
   letter-spacing: 0.7px;
   color: #444;
   font-size: 16px;
+}
+.detials-body-right p , .detials-body-right label{
+  letter-spacing: 0.7px;
+  color: #444;
+  font-size: 16px;
+  font-weight: normal;
+}
+#share-book{
+  float: right;
+  position: relative;
+  right: 15px;
 }

@@ -10,29 +10,29 @@
         <h5 class="panel-title">书籍管理模块</h5>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="#">
+      <form class="form-horizontal" id="book-form" enctype="multipart/form-data">
         <fieldset class="content-group">
           <legend class="text-bold">书籍信息录入</legend>
           <div class="form-group">
-            <label class="control-label col-lg-2">书籍名称</label>
+            <label class="control-label col-lg-2">*书籍名称</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" name="name">
+              <input type="text" class="form-control" name="book_name">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">作者</label>
+            <label class="control-label col-lg-2">*作者</label>
             <div class="col-lg-10">
-              <input type="password" class="form-control" name="author">
+              <input type="password" class="form-control" name="book_author">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">出版时间</label>
+            <label class="control-label col-lg-2">*出版时间</label>
             <div class="col-lg-10">
               <input type="text" class="form-control" name="publish_time">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">出版社</label>
+            <label class="control-label col-lg-2">*出版社</label>
             <div class="col-lg-10">
               <input type="text" class="form-control" name="publishing">
             </div>
@@ -46,34 +46,34 @@
           <div class="form-group">
             <label class="control-label col-lg-2">页数</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" name="page_number">
+              <input type="text" class="form-control" name="page_num">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">语种</label>
+            <label class="control-label col-lg-2">*语种</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" name="language">
+              <input type="text" class="form-control" name="book_language">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">归类</label>
+            <label class="control-label col-lg-2">*归类</label>
             <div class="col-lg-10">
                 <select name="book_type" class="form-control">
-                    <option value="opt1">小说</option>
-                    <option value="opt2">文学</option>
-                    <option value="opt3">艺术与摄影</option>
-                    <option value="opt4">传记</option>
-                    <option value="opt5">励志与成功</option>
-                    <option value="opt6">考试</option>
-                    <option value="opt7">大中专教材辅导</option>
-                    <option value="opt8">中小学教辅</option>
+                    <option value="小说">小说</option>
+                    <option value="文学">文学</option>
+                    <option value="艺术与摄影">艺术与摄影</option>
+                    <option value="传记">传记</option>
+                    <option value="励志与成功">励志与成功</option>
+                    <option value="考试">考试</option>
+                    <option value="大中专教材辅导">大中专教材辅导</option>
+                    <option value="中小学教辅">中小学教辅</option>
                 </select>
               </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-2">书籍图片</label>
+            <label class="control-label col-lg-2">*书籍图片</label>
             <div class="col-lg-10">
-              <input type="file" name="images" accept="image/png,image/gif,image/jpg,image/jpeg" />
+              <input type="file" name="book_img_url" accept="image/png,image/gif,image/jpg,image/jpeg" />
             </div>
           </div>
           <div class="form-group">
@@ -82,13 +82,32 @@
               <textarea cols="20" class="form-control" name="author_profile"></textarea>
             </div>
           </div>
+          <div class="form-group">
+            <label class="control-label col-lg-2">目录</label>
+            <div class="col-lg-10">
+              <textarea cols="20" class="form-control" name="catalogue"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-2">序言</label>
+            <div class="col-lg-10">
+              <textarea cols="20" class="form-control" name="introduction"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-2">文摘</label>
+            <div class="col-lg-10">
+              <textarea cols="20" class="form-control" name="abstract"></textarea>
+            </div>
+          </div>
         </fieldset>
         <div class="text-right">
-          <button type="submit" class="btn btn-primary">录入</button>
+          <input type="button" class="btn btn-primary" id="book-insert" value="录入" />
         </div>
       </form>
     </div>
   </div>
   <script type="text/javascript" src="/webpack_bundle/common.bundle.js"></script>
+  <script type="text/javascript" src="/javascripts/pages/backstage/backstage.js"></script>
 </body>
 </html>

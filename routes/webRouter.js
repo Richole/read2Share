@@ -41,5 +41,5 @@ router.get('/book_details', book.book_details);
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);
-
+router.post('/backstage/bookInfo', multiparty , backstage.bookInfo);
 module.exports = router;

@@ -71,22 +71,23 @@ CREATE TABLE `care` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `book` (
-  `book_id`            INT(11)        NOT NULL  AUTO_INCREMENT,             -- 用户ID
-  `book_author`        VARCHAR(100)   NOT NULL,                             -- 用户ID
-  `publish_time`       VARCHAR(30)    NOT NULL,                             -- 用户ID
-  `publishing`         VARCHAR(30)    NOT NULL,                             -- 用户ID
-  `book_name`          VARCHAR(50)    NOT NULL,                             -- 用户ID
-  `foreign_book_name`  VARCHAR(50)    NULL,                                 -- 用户ID
-  `page_num`           VARCHAR(20)    NULL,                                 -- 用户ID
-  `book_language`      VARCHAR(20)    NULL,                                 -- 用户ID
-  `book_type`          VARCHAR(20)    NOT NULL,                             -- 用户ID
-  `author_profile`     VARCHAR(3000)  NULL,                                 -- 关注用户ID
-  `catalogue`          VARCHAR(3000)  NULL,                                 -- 关注用户ID
-  `introduction`       VARCHAR(3000)  NULL,                                 -- 关注用户ID
-  `abstract`           VARCHAR(3000)  NULL,                                 -- 关注用户ID
-  `share_num`          INT(11)        NULL      DEFAULT 0,                  -- 关注用户ID
-  `search_num`         INT(11)        NULL      DEFAULT 0,                  -- 关注用户ID    
-  `created_at`         TIMESTAMP      NULL      DEFAULT CURRENT_TIMESTAMP,  -- 关注创建时间
+  `book_id`            INT(11)        NOT NULL  AUTO_INCREMENT,             -- 书籍ID
+  `book_author`        VARCHAR(100)   NOT NULL,                             -- 书籍作者
+  `publish_time`       VARCHAR(30)    NOT NULL,                             -- 出版时间
+  `publishing`         VARCHAR(30)    NOT NULL,                             -- 出版社
+  `book_name`          VARCHAR(50)    NOT NULL,                             -- 书名
+  `foreign_book_name`  VARCHAR(50)    NULL,                                 -- 外文书名
+  `page_num`           VARCHAR(20)    NULL,                                 -- 书籍页数
+  `book_language`      VARCHAR(20)    NULL,                                 -- 语种
+  `book_type`          VARCHAR(20)    NOT NULL,                             -- 书籍类型
+  `author_profile`     VARCHAR(3000)  NULL,                                 -- 作者简介
+  `book_img_url`       VARCHAR(100)   NOT NULL,                             -- 书籍图片
+  `catalogue`          VARCHAR(3000)  NULL,                                 -- 目录
+  `introduction`       VARCHAR(3000)  NULL,                                 -- 序言
+  `abstract`           VARCHAR(3000)  NULL,                                 -- 摘要
+  `share_num`          INT(11)        NULL      DEFAULT 0,                  -- 分享次数
+  `search_num`         INT(11)        NULL      DEFAULT 0,                  -- 搜索次数
+  `created_at`         TIMESTAMP      NULL      DEFAULT CURRENT_TIMESTAMP,  -- 书籍创建时间
   PRIMARY KEY (`book_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
