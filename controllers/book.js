@@ -25,3 +25,18 @@ exports.book_details = function (request, response, next) {
     response.redirect('/login');
   }
 };
+
+exports.book = function (request, response, next) {
+  var isVerify = request.params.id == parseInt(request.params.id);
+  if(request.params.id && isVerify) {
+    pool.query({
+      sql: 'select * from book where book_id = ' + request.params.id,
+      success: function (res) {
+        response.json({data: res});
+      }
+    });
+  }
+  else {
+    response.json({success: false});
+  }
+};

@@ -36,9 +36,29 @@ exports.bookInfo = function (request, response, next) {
 
 exports.bookNews = function (request, response, next) {
   pool.query({
-    sql: 'select * from book order by created_at desc limit 9;',
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9;',
     success: function (res) {
       response.json({data: res});
     }
-  })
+  });
 };
+
+exports.bookHot = function (request, response, next) {
+  pool.query({
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by share_num desc limit 9;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+exports.bookSearch = function (request, response, next) {
+  pool.query({
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by search_num desc limit 9;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+
