@@ -33,3 +33,12 @@ exports.bookInfo = function (request, response, next) {
     response.json({success: false, message: '请先登陆'})
   }
 };
+
+exports.bookNews = function (request, response, next) {
+  pool.query({
+    sql: 'select * from book order by created_at desc limit 9;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  })
+};
