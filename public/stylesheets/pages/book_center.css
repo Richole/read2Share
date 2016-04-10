@@ -27,6 +27,9 @@ body{
 .book-img {
   float: left;
 }
+.book-img, .book2-img{
+  width: 80px;
+}
 .book-author {
   display: block;
 }
