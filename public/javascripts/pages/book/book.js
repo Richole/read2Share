@@ -9,8 +9,8 @@ $.get('/backstage/bookNews', {type: $(this).attr('data-type')}, function (res) {
     cloneObj.find('img').attr('src', res.data[i].book_img_url);
     cloneObj.find('div a').text(res.data[i].book_name);
     cloneObj.find('.book-author').text(res.data[i].book_author);
-    cloneObj.find('div a').attr('href','/book_details/' + res.data[i].book_id);
-    cloneObj.find('> a').attr('href','/book_details/' + res.data[i].book_id);
+    cloneObj.find('.book-name').attr('href','/book_details/' + res.data[i].book_id);
+    cloneObj.find('.book-img-a').attr('href','/book_details/' + res.data[i].book_id);
     $('.books-show').append(cloneObj);
   }
 });
