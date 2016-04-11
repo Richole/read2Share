@@ -39,11 +39,12 @@ router.get('/info/showDetails', info.showDetails);
 router.get('/book_center', book.showCenter);
 router.get('/book_details/book/:id', book.book);
 router.get('/book_details/:id', book.book_details);
+router.get('/book_center/bookNews', book.bookNews);
+router.get('/book_center/bookSearch', book.bookSearch);
+router.get('/book_center/bookHot', book.bookHot);
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);
 router.post('/backstage/bookInfo', multiparty , backstage.bookInfo);
-router.get('/backstage/bookNews', backstage.bookNews);
-router.get('/backstage/bookSearch', backstage.bookSearch);
-router.get('/backstage/bookHot', backstage.bookHot);
+
 module.exports = router;

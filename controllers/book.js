@@ -32,6 +32,7 @@ exports.book = function (request, response, next) {
     pool.query({
       sql: 'select * from book where book_id = ' + request.params.id,
       success: function (res) {
+        pool.query({sql: `update book set search_num = search_num + 1 where book_id = ${request.params.id}`});
         response.json({data: res});
       }
     });
@@ -39,4 +40,34 @@ exports.book = function (request, response, next) {
   else {
     response.json({success: false});
   }
+};
+
+exports.bookNews = function (request, response, next) {
+  pool.query({
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+exports.bookHot = function (request, response, next) {
+  pool.query({
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by share_num desc limit 12;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+exports.bookSearch = function (request, response, next) {
+  pool.query({
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by search_num desc limit 12;',
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+exports.bookTopList = function (request, response, next) {
 };
