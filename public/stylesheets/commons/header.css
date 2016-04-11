@@ -1,17 +1,19 @@
-.rts-body-font-background{
-  width: 1000px;
-  height: 300px;
-  margin: 0px auto;
-  background-image: url(/images/007.jpg);
-}
-.rts-body{
-  margin-top: 0px;
+.rts-header-img{
+  background:url(/book1.jpg) 0% 30% no-repeat;
+  height: 400px;
 }
 .rts-header nav{
   position: absolute;
   top: 0px;
   left: 0px;
+  background-color: rgba(0,0,0,0.4);
   width: 100%;
+}
+.search-nav{
+  width: 50%;
+  position: absolute;
+  top: 200px;
+  left: 25%;
 }
 .header-search.form-control {
   width: 100%;
@@ -21,7 +23,7 @@
 }
 .header-search.form-control:focus{
   border-color: #eb7350;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #eb7350);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #eb7350;
 }
 .header-search-icon.glyphicon {
   font-size: 17px;
@@ -34,23 +36,23 @@
   color: #eb7350;
 }
 .rts-nav{
-  width: 1000px;
+  width: 800px;
   margin: 0px auto;
   text-align: center;
 }
+
 .rts-nav li {
   position: relative;
-  line-height: 48px;
-  padding:0px 40px;
+  line-height: 58px;
+  padding:0px 50px;
   display: inline-block;
 }
 li.search-nav {
-  padding: 0px;
+  padding-left: 20px;
   top: 7px;
-  width:400px;
 }
 .rts-nav a, .rts-nav a:link {
-  color: #000;
+  color: #FFF;
   font-size: 14px;
 }
 .rts-icon {
@@ -75,43 +77,4 @@ li.search-nav {
   height: 48px;
   text-align: center;
   z-index: 1000;
-}
-.user-img{
-  text-align: center;
-}
-.user-img img{
-  width: 100px;
-  height: 100px;
-  margin: 50px auto 0px;
-  border-radius: 50%;
-  border: solid 4px #DDD;
-}
-.user-img img:hover{
-  cursor: pointer;
-}
-.user-info-name{
-  text-align: center;
-  color: #FFF;
-  font-size: 30px;
-  font-family: inherit;
-}
-div.content{
-  background-color: #FFF;
-  width: 1000px;
-  height: 40px;
-  margin: 0px auto;
-}
-.content1{
-  text-align: right;
-}
-.content2{
-  text-align: center;
-}
-.content3{
-  text-align: left;
-}
-.col-content:hover{
-  border-bottom: solid 2px #f7691d;
-  padding-bottom: 4px;
-  cursor: pointer;
 }

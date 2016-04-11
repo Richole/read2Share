@@ -1,9 +1,18 @@
-body{
-  padding-top: 58px;
+.rts-header nav{
+  padding-left: 90px;
 }
 .rts-wraper {
   margin: 0px auto;
-  width: 94%;
+  width: 1200px;
+}
+.rts-wraper-title{
+  margin: 380px auto 0px;
+  width: 1200px;
+  padding-left: 225px;
+}
+.rts-wraper-title ul *{
+  display: inline;
+  margin:0px 10px;
 }
 .book-list-title {
   font-size: 21px;
@@ -29,6 +38,7 @@ body{
 }
 .book-img, .book2-img{
   width: 80px;
+  height: 120px;
 }
 .book-author {
   display: block;
@@ -51,4 +61,7 @@ body{
   padding-bottom: 10px;
   border-bottom: solid 1px #DDD;
   font-weight: bold;
+}
+#book2-model{
+  height: 256px;
 }
