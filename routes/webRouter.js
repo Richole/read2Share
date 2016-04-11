@@ -15,6 +15,7 @@ router.post('/index/addGood', index.addGood);
 router.post('/index/addComment', index.addComment);
 router.get('/index/getComment', index.getComment);
 router.post('/index/retransmission', index.retransmission);
+router.get('/book_center/bookTopList', book.bookTopList);
 //注册登陆模块
 router.get('/login', login.showLogin);
 router.get('/login/signOut', login.signOut);
@@ -42,6 +43,7 @@ router.get('/book_details/:id', book.book_details);
 router.get('/book_center/bookNews', book.bookNews);
 router.get('/book_center/bookSearch', book.bookSearch);
 router.get('/book_center/bookHot', book.bookHot);
+router.get('/book_center/bookTypeDetails', book.bookTypeDetails);
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);

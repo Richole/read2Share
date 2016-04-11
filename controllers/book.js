@@ -44,7 +44,7 @@ exports.book = function (request, response, next) {
 
 exports.bookNews = function (request, response, next) {
   pool.query({
-    sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9;',
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9',
     success: function (res) {
       response.json({data: res});
     }
@@ -53,7 +53,7 @@ exports.bookNews = function (request, response, next) {
 
 exports.bookHot = function (request, response, next) {
   pool.query({
-    sql: 'select book_id, book_name, book_img_url, book_author from book order by share_num desc limit 12;',
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by share_num desc limit 12',
     success: function (res) {
       response.json({data: res});
     }
@@ -62,12 +62,39 @@ exports.bookHot = function (request, response, next) {
 
 exports.bookSearch = function (request, response, next) {
   pool.query({
-    sql: 'select book_id, book_name, book_img_url, book_author from book order by search_num desc limit 12;',
+    sql: 'select book_id, book_name, book_img_url, book_author from book order by search_num desc limit 12',
     success: function (res) {
       response.json({data: res});
     }
   });
 };
 
+exports.bookTypeDetails = function (request, response, next) {
+  if(request.query.book_type) {
+    pool.query({
+      sql: `select book_id, book_name, book_img_url, book_author from book where book_type = '${request.query.book_type}'`,
+      success: function (res) {
+        response.json({data: res});
+      }
+    })
+  }
+  else {
+    response.json({data: [], message: '缺少参数book_type'});
+  }
+};
+
 exports.bookTopList = function (request, response, next) {
+  if(request.session.listNum) {
+    request.session.listNum = request.session.listNum <= 2 ? request.session.listNum + 1 : 1;
+  }
+  else {
+    request.session.listNum = 1;
+  }
+  var start = (request.session.listNum - 1) * 7 - (request.session.listNum - 1);
+  pool.query({
+    sql: `select book_name, search_num from book order by search_num desc limit ${start}, 7`,
+    success: function (res) {
+      response.json({data: res});
+    }
+  });
 };
