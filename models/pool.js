@@ -32,7 +32,7 @@ exports.query = function(options) {
     var successHandler = options['success'];
     var errorHandler = options['error'];
     var response = options['response'];
-    console.log(sql);
+    console.log(`sql: ${sql}`);
     if(!args) {
       var query = connection.query(sql, function(error, results) {
         if(error) {

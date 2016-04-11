@@ -33,11 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(config.pictureFolderPath)));
 log.use(app);
 app.use(function (req, res, next) {
-  console.log(`${req.method}:  ${req.path}`);
+  console.log(`${req.method}: ${req.path}`);
   var reqDomain = domain.create();
   reqDomain.on('error', function (err) { // 下面抛出的异常在这里被捕获
-    console.log(err.stack);
-    log.logger.info(err.stack);
+    console.error(err.stack);
+    log.logger.error(err.stack);
     res.send(500, err.stack); // 成功给用户返回了 500
   });
   reqDomain.run(next);
@@ -46,7 +46,6 @@ app.use('/', webRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -55,11 +54,11 @@ app.use(function(req, res, next) {
 // error handlers
 app.use(function(err, req, res, next) {
   if(err.status == 404) {
-    console.error(req.path + ' NOT FOUND.');
+    console.error('NOT FOUND: ' + req.path);
   }
   else {
-    console.log(err);
-    log.logger.info(err);
+    console.error(err);
+    log.logger.error(err);
   }
   res.status(err.status || 500);
   res.render('error', {
