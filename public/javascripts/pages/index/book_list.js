@@ -10,6 +10,7 @@ class List extends React.Component {
     $.get(this.props.url, {
         listNum: this.state.listNum
       }, res => {
+        var isEmpty = res.data.length == 0;
         let arr = res.data.map((item) => {
           item.url = `/book_details/${item.book_id}`;
           return (
@@ -19,9 +20,12 @@ class List extends React.Component {
             </li>
           );
         });
+        if(isEmpty) {
+          alert('没有书籍啦');
+        }
         this.setState({
-          books: arr,
-          listNum: res.data.length == 0 ? 0 : this.state.listNum + 1
+          books: isEmpty ? this.state.books : arr,
+          listNum: isEmpty ? 0 : this.state.listNum + 1
         });
       }
     );
