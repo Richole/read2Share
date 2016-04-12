@@ -48,6 +48,7 @@ router.get('/info/showDetails', info.showDetails);
 
 //书库模块
 router.get('/book_center', book.showCenter);
+router.get('/book_center/:name', book.showCenter);
 router.get('/book_details/book/:id', book.book);
 router.get('/book_details/:id', book.book_details);
 router.get('/book_center/bookNews', book.bookNews);
