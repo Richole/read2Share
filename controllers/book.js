@@ -85,19 +85,18 @@ exports.bookTypeDetails = function (request, response, next) {
 };
 
 exports.bookTopList = function (request, response, next) {
-  if(request.session.listNum) {
-    request.session.listNum = request.session.listNum <= 2 ? request.session.listNum + 1 : 1;
+  if(request.query.listNum) {
+    var start = (request.query.listNum) * 7;
+    pool.query({
+      sql: `select book_id, book_name, search_num from book order by search_num desc limit ${start}, 7`,
+      success: function (res) {
+        response.json({data: res});
+      }
+    });
   }
   else {
-    request.session.listNum = 1;
+    response.json({"sucess": false, "message": "缺少参数listNum"});
   }
-  var start = (request.session.listNum - 1) * 7;
-  pool.query({
-    sql: `select book_id, book_name, search_num from book order by search_num desc limit ${start}, 7`,
-    success: function (res) {
-      response.json({data: res});
-    }
-  });
 };
 
 exports.search = function (request, response, next) {
