@@ -73,5 +73,15 @@ $(".book-list li a").click(function(){
     });
   });
 });
+var path= window.location.pathname;
+var x= path.split('/');
+if(x[2]==""){
 
-
+}
+else{
+  $.get('/book_center/bookSearch',{
+    searchText: x[2]
+  },function(res){
+    console.log(res);
+  });
+}
