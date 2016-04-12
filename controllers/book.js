@@ -33,9 +33,21 @@ exports.book = function (request, response, next) {
 };
 
 exports.bookNews = function (request, response, next) {
+  request.session.bookListNum = 2;
   pool.query({
     sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9',
     success: function (res) {
+      response.json({data: res});
+    }
+  });
+};
+
+exports.bookMore = function (request, response, next) {
+  var start = (request.session.bookListNum - 1) * 9 - 1;
+  pool.query({
+    sql: `select book_id, book_name, book_img_url, book_author from book order by created_at desc limit ${start},9`,
+    success: function (res) {
+      request.session.bookListNum = request.session.bookListNum + 1;
       response.json({data: res});
     }
   });
@@ -80,7 +92,7 @@ exports.bookTopList = function (request, response, next) {
   else {
     request.session.listNum = 1;
   }
-  var start = (request.session.listNum - 1) * 7 - (request.session.listNum - 1);
+  var start = (request.session.listNum - 1) * 7 - 1;
   pool.query({
     sql: `select book_id, book_name, search_num from book order by search_num desc limit ${start}, 7`,
     success: function (res) {

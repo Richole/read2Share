@@ -57,6 +57,7 @@ router.get('/book_center/bookHot', book.bookHot);
 router.get('/book_center/bookTypeDetails', book.bookTypeDetails);
 router.get('/book_center/search', book.search);
 router.post('/book_center/shareBook', book.shareBook);
+router.get('/book_center/bookMore', book.bookMore);
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);
