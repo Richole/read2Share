@@ -48,14 +48,14 @@ router.get('/info/showDetails', info.showDetails);
 
 //书库模块
 router.get('/book_center', book.showCenter);
-router.get('/book_center/:name', book.showCenter);
+router.get('/book_center/search/:name', book.showCenter);
 router.get('/book_details/book/:id', book.book);
 router.get('/book_details/:id', book.book_details);
 router.get('/book_center/bookNews', book.bookNews);
 router.get('/book_center/bookSearch', book.bookSearch);
 router.get('/book_center/bookHot', book.bookHot);
 router.get('/book_center/bookTypeDetails', book.bookTypeDetails);
-router.get('/book_center/bookSearch, book.bookSearch');
+router.get('/book_center/bookSearch', book.bookSearch);
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);
