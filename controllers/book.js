@@ -89,12 +89,13 @@ exports.bookTopList = function (request, response, next) {
   });
 };
 
-exports.bookSearch = function (request, response, next) {
+exports.search = function (request, response, next) {
   if(request.query.searchText) {
+    var searchText = decodeURIComponent(request.query.searchText);
     pool.query({
-      sql: `select book_id, book_name, book_img_url, book_author from book where book_name like '%${request.query.searchText}%' or book_author like '%${request.query.searchText}%' or foreign_book_name like '%${request.query.searchText}%'`,
+      sql: `select book_id, book_name, book_img_url, book_author from book where book_name like '%${searchText}%' or book_author like '%${searchText}%' or foreign_book_name like '%${searchText}%'`,
       success: function (res) {
-        response.json(res);
+        response.json({"data": res});
       }
     })
   }
