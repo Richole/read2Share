@@ -111,7 +111,7 @@ exports.shareBook = function (request, response, next) {
       success: function (res) {
         if(res.length) {
           var book_name = res[0].book_name;
-          var tag = `<a class="book-share-item" data-bookId="${request.body.book_id}">${book_name}</a>`;
+          var tag = `<a class="book-share-item" data-bookId="${request.body.book_id}">#${book_name}#</a>`;
           var text = encodeURIComponent(tag + request.body.share_text);
           pool.query({
             sql: 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, text, '', '', '', '', '阅读分享平台')
