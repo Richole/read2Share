@@ -105,6 +105,13 @@ exports.search = function (request, response, next) {
     pool.query({
       sql: `select book_id, book_name, book_img_url, book_author from book where book_name like '%${searchText}%' or book_author like '%${searchText}%' or foreign_book_name like '%${searchText}%'`,
       success: function (res) {
+        var ids = [];
+        res.map(function (item) {
+          ids.push(item.book_id);
+        });
+        if(ids.length) {
+          pool.query({sql: `update book set search_num = search_num + 1 where book_id in (${ids.join(',')})`});
+        }
         response.json({"data": res});
       }
     })
