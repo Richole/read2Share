@@ -18,3 +18,18 @@ $.get('/book_details/book/' + id[2] ,{
   $('.introduction').text(res.data[0].introduction);
   $('.abstract').text(res.data[0].abstract);
 });
+
+$('#share-commit').click(function(){
+  $.post('/book_center/shareBook', {
+    share_text: $('.share-block-text').val(),
+    book_id: id[2]
+  }, function(res) {
+    if(res.success){
+      alert(res.message);
+      $("#share-close").click();
+    }
+    else{
+      alert(res.message);
+    }
+  });
+});
