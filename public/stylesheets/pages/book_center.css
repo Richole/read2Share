@@ -12,13 +12,10 @@
 }
 .rts-wraper-title ul *{
   display: inline;
-  margin:0px 10px;
+  margin:0px 8px;
 }
 .book-list-title {
   font-size: 21px;
-}
-.book-list {
-  padding-left: 10px;
 }
 .book-list a {
   color: #444;
@@ -35,6 +32,7 @@
 }
 .book-img {
   float: left;
+  margin-right: 15px;
 }
 .book-img, .book2-img{
   width: 80px;

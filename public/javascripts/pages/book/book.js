@@ -49,9 +49,10 @@ $(".book-list li a").click(function(){
   $.get('/book_center/bookTypeDetails',{
      book_type: type
     },function(res){
-    $('.books-show').empty();
+    $('.books-show > div').remove();
     $('.books-search-more').remove();
     $('.books-hot').remove();
+    $('.book-title').text(type);
     // for(var i = 0 ; i < res.data.length; i++){
     //   var cloneObj = $('.book-model').clone();
     //   cloneObj.removeClass('book-model');
