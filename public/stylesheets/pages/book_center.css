@@ -47,6 +47,15 @@
 }
 .books-show {
   padding-top: 20px;
+  position: relative;
+}
+.show-more{
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  padding: 5px 8px;
+  border: solid 1px #DDD;
+  border-radius: 3px;
 }
 .books-box {
   padding: 20px 30px;

@@ -33,7 +33,6 @@ exports.book = function (request, response, next) {
 };
 
 exports.bookNews = function (request, response, next) {
-  request.session.bookListNum = 2;
   pool.query({
     sql: 'select book_id, book_name, book_img_url, book_author from book order by created_at desc limit 9',
     success: function (res) {
@@ -43,7 +42,7 @@ exports.bookNews = function (request, response, next) {
 };
 
 exports.bookMore = function (request, response, next) {
-  var start = (request.session.bookListNum - 1) * 9;
+  var start = request.query.book_length;
   pool.query({
     sql: `select book_id, book_name, book_img_url, book_author from book order by created_at desc limit ${start},9`,
     success: function (res) {
