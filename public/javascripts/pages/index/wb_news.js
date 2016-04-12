@@ -235,8 +235,7 @@ class NewFooter extends React.Component {
   }
 }
 
-
-exports.getNews = function (url, id) {
+exports.getNews = (url, id) => {
   return React.render(
     <News url={url} />,
     document.getElementById(id)
