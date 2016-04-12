@@ -5,17 +5,11 @@ var weixin = require('../controllers/weixin.js');
 var info = require('../controllers/info.js');
 var book = require('../controllers/book.js');
 var backstage = require('../controllers/backstage.js');
+var authority = require('../controllers/authority.js');
 var multiparty = require('connect-multiparty')();
 var router = express.Router();
-//首页模块
-router.get('/', index.showIndex);
-router.post('/index/userMessage', multiparty , index.userMessage);
-router.get('/index/userMessage', index.getUserMessage);
-router.post('/index/addGood', index.addGood);
-router.post('/index/addComment', index.addComment);
-router.get('/index/getComment', index.getComment);
-router.post('/index/retransmission', index.retransmission);
-router.get('/book_center/bookTopList', book.bookTopList);
+
+
 //注册登陆模块
 router.get('/login', login.showLogin);
 router.get('/login/signOut', login.signOut);
@@ -31,6 +25,22 @@ router.post('/login/modifyPassword', login.modifyPassword);
 //微信模块
 router.get('/weixin', weixin.checkSignature);
 router.post('/weixin', weixin.weixinEvent);
+
+//登陆验证模块
+router.get('*', authority.check);
+router.post('*', authority.check);
+
+//以下模块需要登陆验证通过
+
+//首页模块
+router.get('/', index.showIndex);
+router.post('/index/userMessage', multiparty , index.userMessage);
+router.get('/index/userMessage', index.getUserMessage);
+router.post('/index/addGood', index.addGood);
+router.post('/index/addComment', index.addComment);
+router.get('/index/getComment', index.getComment);
+router.post('/index/retransmission', index.retransmission);
+router.get('/book_center/bookTopList', book.bookTopList);
 
 //详情模块
 router.get('/info', info.showInfo);
