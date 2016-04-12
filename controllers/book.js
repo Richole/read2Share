@@ -117,6 +117,9 @@ exports.shareBook = function (request, response, next) {
           pool.query({
             sql: 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, text, book_img_url, '', '', '', '阅读分享平台')
           });
+          pool.query({
+            sql: `update book set share_num = share_num + 1 where book_id = ${request.body.book_id}`
+          });
           response.json({"success": true, "message": "分享成功"});
         }
         else {
