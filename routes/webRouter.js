@@ -44,6 +44,7 @@ router.get('/book_center/bookNews', book.bookNews);
 router.get('/book_center/bookSearch', book.bookSearch);
 router.get('/book_center/bookHot', book.bookHot);
 router.get('/book_center/bookTypeDetails', book.bookTypeDetails);
+router.get('/book_center/bookSearch, book.bookSearch');
 
 //后台模块
 router.get('/backstage', backstage.showBackstage);

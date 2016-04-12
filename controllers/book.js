@@ -92,9 +92,23 @@ exports.bookTopList = function (request, response, next) {
   }
   var start = (request.session.listNum - 1) * 7 - (request.session.listNum - 1);
   pool.query({
-    sql: `select book_name, search_num from book order by search_num desc limit ${start}, 7`,
+    sql: `select book_id, book_name, search_num from book order by search_num desc limit ${start}, 7`,
     success: function (res) {
       response.json({data: res});
     }
   });
+};
+
+exports.bookSearch = function (request, response, next) {
+  if(request.query.searchText) {
+    pool.query({
+      sql: `select book_id, book_name, book_img_url, book_author from book where book_name like '%${request.query.searchText}%' or book_author like '%${request.query.searchText}%' or foreign_book_name like '%${request.query.searchText}%'`,
+      success: function (res) {
+        response.json(res);
+      }
+    })
+  }
+  else {
+    response.json({"success": false, "message": "缺少参数searchText"});
+  }
 };

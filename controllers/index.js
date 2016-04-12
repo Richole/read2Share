@@ -24,7 +24,7 @@ exports.userMessage = function (request, response, next) {
   request.body.text = request.body.text || "";
 
   if(!hasImage && !musics.size && !videos.size) {
-    var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), '', '', '', '', 'WeiBo');
+    var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), '', '', '', '', '阅读分享平台');
     pool.query({sql: sql, response: response});
   }
   else if (hasImage && isArray) {
@@ -35,7 +35,7 @@ exports.userMessage = function (request, response, next) {
       arr.push('/'+ name);
       fs.rename(images[i].path, address);
     }
-    var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), arr.join('###'), '', '', '', 'WeiBo');
+    var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), arr.join('###'), '', '', '', '阅读分享平台');
     pool.query({sql: sql, response: response});
   }
   else if (hasImage && !isArray) {
@@ -44,7 +44,7 @@ exports.userMessage = function (request, response, next) {
       var address = config.pictureFolderPath + name;
       fs.rename(images.path, address, function () {
         var pool = require('../models/pool.js');
-        var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), '/' + name, '', '', '', 'WeiBo');
+        var sql = 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, encodeURIComponent(request.body.text), '/' + name, '', '', '', '阅读分享平台');
         pool.query({sql: sql, response: response});
       });
     }
