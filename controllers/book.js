@@ -43,7 +43,7 @@ exports.bookNews = function (request, response, next) {
 };
 
 exports.bookMore = function (request, response, next) {
-  var start = (request.session.bookListNum - 1) * 9 - 1;
+  var start = (request.session.bookListNum - 1) * 9;
   pool.query({
     sql: `select book_id, book_name, book_img_url, book_author from book order by created_at desc limit ${start},9`,
     success: function (res) {
@@ -92,7 +92,7 @@ exports.bookTopList = function (request, response, next) {
   else {
     request.session.listNum = 1;
   }
-  var start = (request.session.listNum - 1) * 7 - 1;
+  var start = (request.session.listNum - 1) * 7;
   pool.query({
     sql: `select book_id, book_name, search_num from book order by search_num desc limit ${start}, 7`,
     success: function (res) {
