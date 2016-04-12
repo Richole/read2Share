@@ -44,7 +44,25 @@
           <p>页数: <label class="page-num"></label></p>
           <p>语种： <label class="book-language"></label></p>
         </div>
-        <button type="button" class="btn btn-info" id="share-book">分享此书</button>
+        <button type="button" class="btn btn-info" id="share-book" data-toggle="modal" data-target="#myModal">分享此书</button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">这里还可以写下喜欢此书的理由哦...</h4>
+              </div>
+              <div class="modal-body">
+                <textarea class="share-block-text"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="share-close">关闭</button>
+                <button type="button" class="btn btn-primary" id="share-commit">提交分享</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="detials-end">
