@@ -107,14 +107,15 @@ exports.search = function (request, response, next) {
 exports.shareBook = function (request, response, next) {
   if(request.body.book_id && request.body.share_text) {
     pool.query({
-      sql: `select book_name from book where book_id = ${request.body.book_id}`,
+      sql: `select book_name, book_img_url from book where book_id = ${request.body.book_id}`,
       success: function (res) {
         if(res.length) {
           var book_name = res[0].book_name;
+          var book_img_url = res[0].book_img_url;
           var tag = `<a class="book-share-item" data-bookId="${request.body.book_id}">#${book_name}#</a>`;
           var text = encodeURIComponent(tag + request.body.share_text);
           pool.query({
-            sql: 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, text, '', '', '', '', '阅读分享平台')
+            sql: 'insert into message (`uid`,`text`,`image_url`, `video_url`,`thumb_video_url`, `music_url`, `come_from`) values("{0}","{1}","{2}","{3}","{4}", "{5}", "{6}")'.format(request.session.uid, text, book_img_url, '', '', '', '阅读分享平台')
           });
           response.json({"success": true, "message": "分享成功"});
         }
