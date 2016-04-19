@@ -11,7 +11,7 @@ class List extends React.Component {
         listNum: this.state.listNum
       }, res => {
         var isEmpty = res.data.length == 0;
-        let arr = res.data.map((item) => {
+        var arr = res.data.map((item) => {
           item.url = `/book_details/${item.book_id}`;
           return (
             <li>
