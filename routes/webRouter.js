@@ -45,6 +45,7 @@ router.get('/book_center/bookTopList', book.bookTopList);
 //详情模块
 router.get('/info', info.showInfo);
 router.get('/info/showDetails', info.showDetails);
+router.post('/info/updateImg', multiparty, info.updateImg);
 
 //书库模块
 router.get('/book_center', book.showCenter);

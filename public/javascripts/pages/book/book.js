@@ -47,6 +47,7 @@ if(x.length <= 2){
   });
 }
 else{
+  $('.show-more').remove();
   $.get('/book_center/search',{
     searchText: x[3]
   },function(res){
